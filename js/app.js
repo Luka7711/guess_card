@@ -11,15 +11,14 @@ let foods = ['pizza', 'taco', 'burger', 'apple', 'peanuts', 'watermelon',
 
 
 
-
 class Customer {
 	constructor(name, food) {
 		this.name = name;
-		this.foods = [];
+		this.food = food;
 	}
-	addFood(food) {
-		// push food into this foods array
-	}
+	// addFood(food) {
+	// 	// push food into this foods array
+	// }
 }
 
 
@@ -33,24 +32,32 @@ const game = {
 
 	randomFood:[],
 
-	// for game play -- kitchen sends out random item
+
+	// for game play -- kitchen sends out 4 random items
 	getRandomFood: function() {
-		// for(let i = 0; i < foods.length; i)
-		// this.randomFood = ["meat", "chicken", "ice-cream"];
+
+		// "refill" the foodCopy
+
+		// foodCopy = foods; 
+		let foodCopy = Array.from(foods); //shallow copy 
+		
 		for(let i=0; i < 4; i++){
-		let r = Math.floor(Math.random()*(13-1))+1;
-		this.randomFood.push(foods[r]);
-		// get a random string from the foods array
-		// return it
-	 }
+
+			let r = Math.floor(Math.random()*(foodCopy.length));
+			// SPLICE FOOD COPY 
+			this.randomFood.push(foodCopy[r]);
+			foodCopy.splice(r, 1);
+	 	}
 	},
 
-	// createClient: function(){
-	// 	this.getRandomFood()
-	// 	for(let i=0; i < names.length; i++){
-	// 		this.client.push(new Customer(names[i], this.randomFood));
-	// 	}
-	// }
+	createClient: function(){
+		
+		for(let i=0; i < names.length; i++){
+			this.getRandomFood();
+			this.client.push(new Customer(names[i], this.randomFood));
+			this.randomFood = [];
+		}
+	},
 
 	createClients() {
 		// method in game object:
@@ -65,9 +72,6 @@ const game = {
 
 	}
 }
-
-
-game.getRandomFood();
 
 
 
@@ -124,34 +128,9 @@ game.getRandomFood();
 
 //list of food u have to guess
 
-//1. ice cream
-//2. pizza
-//3. taco
-//4. burger
-//5. apple
-//6. peanuts
-//7. watermelon
-//8. bread
-//9. avacado
-//10. cake
-//11. fish
-//12. carrot
-//13. chicken
-//14. meat
 
 
 
 
 
-// class Clients{
-// 	constructor(name, cash, food){
-// 		this.name = name;
-// 		this.cash = cash;
-// 		this.food = food;
-// 	}
-// 	orderFood(){
-// 		for(let i=0; i<this.food.length; i++){
-// 		console.log(`Hey i want some ${food[i]}`);
-// 	}
-//   }
-// }
+
