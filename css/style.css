@@ -1,0 +1,109 @@
+/*
+
+body{
+	background-color: brown;
+}*/
+
+
+/*form{
+	margin-left:40%;
+	margin-top:25%;
+}*/
+/*
+input{
+	font-size:25px;
+}
+
+#btn_submit{
+	display:block;
+	margin-left:100px;
+	margin-top:20px;
+}
+
+*/
+
+
+/*body{
+	margin: 0;
+}
+
+
+.left_content{
+	width:50%;
+}
+
+
+.order_container{
+	margin:100px 50px;
+
+}
+
+.customer_image{
+	width:200px;
+	height:200px;
+	background:salmon;
+	margin-left:50px;
+	margin-right:50px;
+}
+
+.order_container ul, .customer_image{
+	float:left;
+}
+
+.order_container ul li{
+	font-size:20px;
+	letter-spacing: 3px;
+	padding:5px;
+}
+
+.order_container:after{
+	content:"";
+	clear:both;
+}
+
+.points_container{
+	width:100%;
+}
+
+
+.points_dash_1, .points_dash_{
+	float:left;
+	width:50%;
+}
+
+*/
+
+body{
+	margin:0 auto;
+}
+.container{
+	width:650px;
+	height:500px;
+	border:1px solid black;
+	margin:100px auto;
+}
+
+.card{
+	width:100px;
+	height:100px;
+	border:1px solid black;
+	float:left;
+	margin-left:20px;
+	margin-top:30px;
+	background-size: cover;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
