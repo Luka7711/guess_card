@@ -3,30 +3,76 @@
 
 //created names and foods 
 
-let names = ['Greg','Bill', 'Anill', 'Porter', 'Thiago', 'Lana', 'Wes',
-'Justin', 'Taniya', 'Zack'];
+let names = ['Greg','Bill', 'Anil', 'Porter', 'Thiago', 'Lana', 'Wes',
+'Justin', 'Tanya', 'Zack', 'Clayton', 'Connaught', 'Reuben', 'Jacob'];
 
-let foods = ['pizza', 'taco', 'burger', 'apple', 'peanuts', 'watermelon', 'bread', 'avacado',
-'cake', 'fish', 'carrot', 'chicken', 'meat'];
+let foods = ['pizza', 'taco', 'burger', 'apple', 'peanuts', 'watermelon', 
+'bread', 'avacado', 'cake', 'fish', 'carrot', 'chicken', 'meat', 'ice-cream'];
+
+
+
+
+class Customer {
+	constructor(name, food) {
+		this.name = name;
+		this.foods = [];
+	}
+	addFood(food) {
+		// push food into this foods array
+	}
+}
+
 
 
 
 const game = {
 
-	customers:[]
+	client:[],
 	
 	cash:50,
 
-	createClient: function(){
-		s
+	randomFood:[],
+
+	// for game play -- kitchen sends out random item
+	getRandomFood: function() {
+		// for(let i = 0; i < foods.length; i)
+		// this.randomFood = ["meat", "chicken", "ice-cream"];
+		for(let i=0; i < 4; i++){
+		let r = Math.floor(Math.random()*(13-1))+1;
+		this.randomFood.push(foods[r]);
+		// get a random string from the foods array
+		// return it
+	 }
 	},
 
-	orderFood: function(){
-		for(let i=0; i < this.client.length; i++){
-		console.log(`I would like to order some ${this.client.food}`)
-		}
+	// createClient: function(){
+	// 	this.getRandomFood()
+	// 	for(let i=0; i < names.length; i++){
+	// 		this.client.push(new Customer(names[i], this.randomFood));
+	// 	}
+	// }
+
+	createClients() {
+		// method in game object:
+		/// for each name
+			// create client new Client
+			// create a "shallow" copy of food array -- check out Array.from() or Array.slice()
+			// 4 times 
+				// get length of copy of array
+				// get rand index into that array
+				// splice out that item -- remove it from the array
+				// client.addFood(what you spliced out)
+
 	}
 }
+
+
+game.getRandomFood();
+
+
+
+
+
 
 
 
