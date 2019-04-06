@@ -28,6 +28,62 @@ let urls = [
 ];
 
 
+
+
+const data = {
+   foodItems: [
+     {
+        itemName:'Pizza',
+        img:'url()'
+     },
+      {
+        itemName:'Pizza',
+        img:'url()'
+     },
+
+      {
+        itemName:'Pizza',
+        img:'url()'
+     },
+
+      {
+        itemName:'Pizza',
+        img:'url()'
+     },
+
+      {
+        itemName:'Pizza',
+        img:'url()'
+     },
+
+      {
+        itemName:'Pizza',
+        img:'url()'
+     },
+
+      {
+        itemName:'Pizza',
+        img:'url()'
+     },
+
+      {
+        itemName:'Pizza',
+        img:'url()'
+     },
+
+      {
+        itemName:'Pizza',
+        img:'url()'
+     }
+
+]
+}
+
+
+
+
+
+
 class Customer {
     constructor(name, food, cash) {
         this.name = name;
@@ -54,6 +110,8 @@ const game = {
     gameOver:false,
 
     round:10,
+
+    gameOn:false,
 
     // for game play -- kitchen sends out 4 random items
     getRandomFood: function () {
@@ -88,7 +146,7 @@ const game = {
             for(let i = 0; i < urls.length; i++){
                 $cards = $('.card').get(i);
                 $($cards).css('background-image', urls[i]);
-                // $($cards).attr('class', data.)
+                $($cards).addClass();
             } 
         }, 1000)
     },
@@ -106,7 +164,7 @@ const game = {
             temporaryValue, randomIndex;
 
         // While there remain elements to shuffle...
-        while (0 !== currentIndex) {
+            while (0 !== currentIndex) {
 
             // Pick a remaining element...
             randomIndex = Math.floor(Math.random() * currentIndex);
@@ -153,21 +211,21 @@ $('.container').on('click', (e) => {
 //add class to current square when you give it url
 
 
-// const data = {
+const data = {
 
-// names:['bill', 'jack'],
+names:['bill', 'jack'],
 
-// foods:[{
-//     item:'Pizza',
-//     img:'url(1)'
-// },
-//     {
-//     item:'Bread',
-//     img:'url(2)'
+foods:[{
+    item:'Pizza',
+    img:'url(1)'
+},
+    {
+    item:'Bread',
+    img:'url(2)'
 
-// }]
+}]
 
-// }
+}
 
 
 //foodsItem:[14item];
