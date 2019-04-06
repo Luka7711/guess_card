@@ -10,7 +10,7 @@ let foods = ['pizza', 'taco', 'burger', 'apple', 'peanuts', 'watermelon',
 
 
 
-    const data = [
+    const urls = [
 
     'url(https://png.pngtree.com/element_pic/16/11/03/cd52d8393a2f9f211e1056c2d6163a3c.jpg)',
     'url(https://icon2.kisspng.com/20180327/izq/kisspng-korean-taco-junk-food-fast-food-vegetarian-cuisine-tacos-5aba84673ebf85.575845881522173031257.jpg)',
@@ -38,7 +38,7 @@ class Data {
     }
 } 
 
-
+//to get an object of clients with certain choice of orders
 class Customer {
     constructor(name, food, cash) {
         this.name = name;
@@ -65,6 +65,15 @@ const game = {
     round:10,
 
     gameOn:false,
+
+    data: [],
+
+    //pushing food names & urls to append to divs element(class, backg-img)
+    dataForClasses:function(){
+        for(let i=0; i < foods.length; i++){
+            this.data.push(new Data(foods[i], urls[i]));
+        }
+    },
 
     // for game play -- kitchen sends out 4 random items
     getRandomFood: function () {
@@ -111,9 +120,9 @@ const game = {
         },
 
     //The de-facto unbiased shuffle algorithm is the Fisher-Yates (aka Knuth) Shuffle.	
-    shuffleImages(urls) {
+    shuffleImages(data) {
 
-        var currentIndex = urls.length,
+        var currentIndex = this.data.length,
             temporaryValue, randomIndex;
 
         // While there remain elements to shuffle...
@@ -124,25 +133,21 @@ const game = {
             currentIndex -= 1;
 
             // And swap it with the current element.
-            temporaryValue = urls[currentIndex];
-            urls[currentIndex] = urls[randomIndex];
-            urls[randomIndex] = temporaryValue;
+            temporaryValue = this.data[currentIndex];
+            this.data[currentIndex] = this.data[randomIndex];
+            this.data[randomIndex] = temporaryValue;
         }
     },
-
-
+    
     clearTimeout() {
         clearInterval(this.intervalId);
     },
 
-    insertNameOrder() {
-        // for(let i=0; i < )
-    }
-
 }
 
     game.createClient();
-
+    game.dataForClasses();
+    game.shuffleImages();
 
 // $('form').on('click', (e)=>{
 // 	e.preventDefault();
@@ -156,127 +161,6 @@ $('.container').on('click', (e) => {
     	game.startGame();
     }
 });
-
-
-
-
-
-//add class to current square when you give it url
-
-
-const data = {
-
-names:['bill', 'jack'],
-
-foods:[{
-    item:'Pizza',
-    img:'url(1)'
-},
-    {
-    item:'Bread',
-    img:'url(2)'
-
-}]
-
-}
-
-
-//foodsItem:[14item];
-//clients[name, 4 foodItems]
-//urls[14]
-
-
-// loop thgrough foods array;
-// isert data into divs and give them class of foods item
-
-
-
-
-
-
-
-
-
-// let urls = [
-   
-   // orders:[ 
-   //  {
-   //      item:'pizza',
-   //      img: 'url(https://png.pngtree.com/element_pic/16/11/03/cd52d8393a2f9f211e1056c2d6163a3c.jpg)',
-   //   },
-
-   //   {
-   //      item:'taco',
-   //      img:'url(https://icon2.kisspng.com/20180327/izq/kisspng-korean-taco-junk-food-fast-food-vegetarian-cuisine-tacos-5aba84673ebf85.575845881522173031257.jpg)'
-   //   },
-
-   //   {
-   //      item: "buger", 
-   //      img: 'url(https://png.pngtree.com/element_pic/17/02/23/8a1ce248ab44efc7b37adad0b7b2d933.jpg)'
-
-   //   },
-
-   //   {
-   //      item:'apple',
-   //      img:'url(http://pngimg.com/uploads/apple/apple_PNG12455.png)'
-   //   },
-
-   //   {
-   //      item:'peanuts',
-   //      img:'url(http://www.sclance.com/pngs/peanuts-png/peanuts_png_998688.jpg)'
-   //   },
-
-   //  {
-   //      item: 'watermelon',
-   //      img:'url(https://banner2.kisspng.com/20180129/tle/kisspng-watermelon-seed-fruit-vegetable-watermelon-5a6eaadc992509.7018593115172021406273.jpg)'
-   //  },
-   //  {
-   //      item:'bread'
-   //      img:'url(https://banner2.kisspng.com/20180206/wrw/kisspng-bakery-baguette-white-bread-baking-bread-png-image-5a794d2cdf62f9.756529391517899052915.jpg)'
-   //  },
-
-   //  {
-   //      item:'avocado',
-   //      img: 'url(https://c7.uihere.com/files/381/546/423/avocado-guacamole-euclidean-vector-fruit-avocado.jpg)'
-   //  },
-
-   //  {
-   //      item:'cake',
-   //      img: 'url(https://banner2.kisspng.com/20171127/0f3/birthday-cake-png-clip-art-image-5a1c2f51907c66.2617623015117965615918.jpg)',
-
-
-   //  },
-   //  {
-   //      item:'fish',
-   //      img:    'url(http://pngimg.com/uploads/fish/fish_PNG25137.png)',
-
-   //  },
-   //  {
-   //      item:'carrot',
-   //      img:'url(https://www.culturedfoodlife.com/wp-content/uploads/2017/04/Carrot.png)',
-
-   //  }
-   //  {
-   //      item:'chicken',
-   //      img:'url(http://pngimg.com/uploads/fried_chicken/fried_chicken_PNG14109.png)',
-
-   //  },
-   //  {
-   //      item:'steak',
-   //      img:'url(https://png.pngtree.com/element_pic/00/16/07/0957805b9b6c3de.jpg)',
-
-   //  },
-   //  {
-   //      item:'ice-cream',
-   //      img:'url(http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c1bd.png)'
-
-   //  }
-
-   //  ]
-   //  ];
-
-
-
 
 
 
