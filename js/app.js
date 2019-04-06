@@ -10,11 +10,12 @@ let foods = ['pizza', 'taco', 'burger', 'apple', 'peanuts', 'watermelon',
 
 
 
-let urls = [
+    const data = [
+
     'url(https://png.pngtree.com/element_pic/16/11/03/cd52d8393a2f9f211e1056c2d6163a3c.jpg)',
-    'url(http://pngimg.com/uploads/apple/apple_PNG12455.png)',
     'url(https://icon2.kisspng.com/20180327/izq/kisspng-korean-taco-junk-food-fast-food-vegetarian-cuisine-tacos-5aba84673ebf85.575845881522173031257.jpg)',
     'url(https://png.pngtree.com/element_pic/17/02/23/8a1ce248ab44efc7b37adad0b7b2d933.jpg)',
+    'url(http://pngimg.com/uploads/apple/apple_PNG12455.png)',
     'url(http://www.sclance.com/pngs/peanuts-png/peanuts_png_998688.jpg)',
     'url(https://banner2.kisspng.com/20180129/tle/kisspng-watermelon-seed-fruit-vegetable-watermelon-5a6eaadc992509.7018593115172021406273.jpg)',
     'url(https://banner2.kisspng.com/20180206/wrw/kisspng-bakery-baguette-white-bread-baking-bread-png-image-5a794d2cdf62f9.756529391517899052915.jpg)',
@@ -28,60 +29,14 @@ let urls = [
 ];
 
 
+//creating class to get an object of food names and images
 
-
-const data = {
-   foodItems: [
-     {
-        itemName:'Pizza',
-        img:'url()'
-     },
-      {
-        itemName:'Pizza',
-        img:'url()'
-     },
-
-      {
-        itemName:'Pizza',
-        img:'url()'
-     },
-
-      {
-        itemName:'Pizza',
-        img:'url()'
-     },
-
-      {
-        itemName:'Pizza',
-        img:'url()'
-     },
-
-      {
-        itemName:'Pizza',
-        img:'url()'
-     },
-
-      {
-        itemName:'Pizza',
-        img:'url()'
-     },
-
-      {
-        itemName:'Pizza',
-        img:'url()'
-     },
-
-      {
-        itemName:'Pizza',
-        img:'url()'
-     }
-
-]
-}
-
-
-
-
+class Data {
+    constructor(item, img){
+        this.item = item;
+        this.img = img;
+    }
+} 
 
 
 class Customer {
@@ -91,8 +46,6 @@ class Customer {
         this.cash = cash;
     }
 }
-
-
 
 
 const game = {
@@ -243,6 +196,84 @@ foods:[{
 
 
 
+
+// let urls = [
+   
+   // orders:[ 
+   //  {
+   //      item:'pizza',
+   //      img: 'url(https://png.pngtree.com/element_pic/16/11/03/cd52d8393a2f9f211e1056c2d6163a3c.jpg)',
+   //   },
+
+   //   {
+   //      item:'taco',
+   //      img:'url(https://icon2.kisspng.com/20180327/izq/kisspng-korean-taco-junk-food-fast-food-vegetarian-cuisine-tacos-5aba84673ebf85.575845881522173031257.jpg)'
+   //   },
+
+   //   {
+   //      item: "buger", 
+   //      img: 'url(https://png.pngtree.com/element_pic/17/02/23/8a1ce248ab44efc7b37adad0b7b2d933.jpg)'
+
+   //   },
+
+   //   {
+   //      item:'apple',
+   //      img:'url(http://pngimg.com/uploads/apple/apple_PNG12455.png)'
+   //   },
+
+   //   {
+   //      item:'peanuts',
+   //      img:'url(http://www.sclance.com/pngs/peanuts-png/peanuts_png_998688.jpg)'
+   //   },
+
+   //  {
+   //      item: 'watermelon',
+   //      img:'url(https://banner2.kisspng.com/20180129/tle/kisspng-watermelon-seed-fruit-vegetable-watermelon-5a6eaadc992509.7018593115172021406273.jpg)'
+   //  },
+   //  {
+   //      item:'bread'
+   //      img:'url(https://banner2.kisspng.com/20180206/wrw/kisspng-bakery-baguette-white-bread-baking-bread-png-image-5a794d2cdf62f9.756529391517899052915.jpg)'
+   //  },
+
+   //  {
+   //      item:'avocado',
+   //      img: 'url(https://c7.uihere.com/files/381/546/423/avocado-guacamole-euclidean-vector-fruit-avocado.jpg)'
+   //  },
+
+   //  {
+   //      item:'cake',
+   //      img: 'url(https://banner2.kisspng.com/20171127/0f3/birthday-cake-png-clip-art-image-5a1c2f51907c66.2617623015117965615918.jpg)',
+
+
+   //  },
+   //  {
+   //      item:'fish',
+   //      img:    'url(http://pngimg.com/uploads/fish/fish_PNG25137.png)',
+
+   //  },
+   //  {
+   //      item:'carrot',
+   //      img:'url(https://www.culturedfoodlife.com/wp-content/uploads/2017/04/Carrot.png)',
+
+   //  }
+   //  {
+   //      item:'chicken',
+   //      img:'url(http://pngimg.com/uploads/fried_chicken/fried_chicken_PNG14109.png)',
+
+   //  },
+   //  {
+   //      item:'steak',
+   //      img:'url(https://png.pngtree.com/element_pic/00/16/07/0957805b9b6c3de.jpg)',
+
+   //  },
+   //  {
+   //      item:'ice-cream',
+   //      img:'url(http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c1bd.png)'
+
+   //  }
+
+   //  ]
+   //  ];
 
 
 
