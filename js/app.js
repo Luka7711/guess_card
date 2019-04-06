@@ -53,6 +53,8 @@ const game = {
 
     gameOver:false,
 
+    round:10,
+
     // for game play -- kitchen sends out 4 random items
     getRandomFood: function () {
 
@@ -82,12 +84,20 @@ const game = {
     startGame() {
         this.intervalId = setInterval(() => {
             this.timer++;
+            this.roundTimer();
             for(let i = 0; i < urls.length; i++){
                 $cards = $('.card').get(i);
                 $($cards).css('background-image', urls[i]);
-            }
-        }, 500)
+                // $($cards).attr('class', data.)
+            } 
+        }, 1000)
     },
+
+    roundTimer(){
+        $round = this.round-=1;
+        console.log($round);    
+        $('.timer').text($round);
+        },
 
     //The de-facto unbiased shuffle algorithm is the Fisher-Yates (aka Knuth) Shuffle.	
     shuffleImages(urls) {
@@ -112,11 +122,15 @@ const game = {
 
     clearTimeout() {
         clearInterval(this.intervalId);
+    },
+
+    insertNameOrder() {
+        // for(let i=0; i < )
     }
 
 }
 
-game.createClient();
+    game.createClient();
 
 
 // $('form').on('click', (e)=>{
@@ -126,12 +140,71 @@ game.createClient();
 // });
 
 $('.container').on('click', (e) => {
-    
+    console.log($(e.target).css('background-image'));
  if($(e.target).attr('class') === 'card btn'){
-        game.shuffleImages(urls);
     	game.startGame();
     }
 });
+
+
+
+
+
+//add class to current square when you give it url
+
+
+// const data = {
+
+// names:['bill', 'jack'],
+
+// foods:[{
+//     item:'Pizza',
+//     img:'url(1)'
+// },
+//     {
+//     item:'Bread',
+//     img:'url(2)'
+
+// }]
+
+// }
+
+
+//foodsItem:[14item];
+//clients[name, 4 foodItems]
+//urls[14]
+
+
+// loop thgrough foods array;
+// isert data into divs and give them class of foods item
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
