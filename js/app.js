@@ -7,10 +7,10 @@ let names = ['Greg','Bill', 'Anil', 'Porter', 'Thiago', 'Lana', 'Wes',
 'Justin', 'Tanya', 'Zack', 'Clayton', 'Connaught', 'Reuben', 'Jacob'];
 
 let foods = ['pizza', 'taco', 'burger', 'apple', 'peanuts', 'watermelon', 
-'bread', 'avocado', 'cake', 'fish', 'carrot', 'chicken', 'meat', 'ice-cream'];
+'bread', 'avocado', 'cake', 'fish', 'carrot', 'chicken', 'steak', 'ice-cream'];
 
 
-let images = [],
+
 
 let urls = [
 'url(https://png.pngtree.com/element_pic/16/11/03/cd52d8393a2f9f211e1056c2d6163a3c.jpg)',
@@ -20,8 +20,14 @@ let urls = [
 'url(http://www.sclance.com/pngs/peanuts-png/peanuts_png_998688.jpg)',
 'url(https://banner2.kisspng.com/20180129/tle/kisspng-watermelon-seed-fruit-vegetable-watermelon-5a6eaadc992509.7018593115172021406273.jpg)',
 'url(https://banner2.kisspng.com/20180206/wrw/kisspng-bakery-baguette-white-bread-baking-bread-png-image-5a794d2cdf62f9.756529391517899052915.jpg)',
-'url()'
- ]
+'url(https://c7.uihere.com/files/381/546/423/avocado-guacamole-euclidean-vector-fruit-avocado.jpg)',
+'url(https://banner2.kisspng.com/20171127/0f3/birthday-cake-png-clip-art-image-5a1c2f51907c66.2617623015117965615918.jpg)',
+'url(http://pngimg.com/uploads/fish/fish_PNG25137.png)',
+'url(https://www.culturedfoodlife.com/wp-content/uploads/2017/04/Carrot.png)',
+'url(http://pngimg.com/uploads/fried_chicken/fried_chicken_PNG14109.png)',
+'url(https://png.pngtree.com/element_pic/00/16/07/0957805b9b6c3de.jpg)',
+'url(http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c1bd.png)'
+ ];
 
 
 class Customer {
@@ -30,9 +36,6 @@ class Customer {
 		this.food = food;
 		this.cash = cash;
 		}
-	// addFood(food) {
-	// 	// push food into this foods array
-	// }
 }
 
 
@@ -48,13 +51,10 @@ const game = {
 
 	patience:7, 
 
-	timer: null,
-
+	timer:0,
 
 	// for game play -- kitchen sends out 4 random items
 	getRandomFood: function() {
-
-		// "refill" the foodCopy
 
 		// foodCopy = foods; 
 		let foodCopy = Array.from(foods); //shallow copy 
@@ -67,7 +67,7 @@ const game = {
 			foodCopy.splice(r, 1);
 	 	}
 	},
-
+	//creacte 14 customers with 4 items of food each
 	createClient: function(){
 		
 		for(let i=0; i < names.length; i++){
@@ -80,17 +80,39 @@ const game = {
 
 	//starting the time, to keep track of timer when game starts
 	startGame(){
-		this.intervalId = setInterval(()=>{
+		this.intervalId = setInterval(() => {
 			this.timer++;
-			console.log(`timer runs ${this.timer}`);
-		}, 2000)
+			console.log(this.timer);
+		}, 500)
 	},
+	
+	//The de-facto unbiased shuffle algorithm is the Fisher-Yates (aka Knuth) Shuffle.	
+	shuffleImages(urls) {
 
-	createDivCards(){
-		for(let i=0; i < foods.length; i++){
-			let $card = $('.card').get()
-		}
+    var currentIndex = urls.length,
+        temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = urls[currentIndex];
+        urls[currentIndex] = urls[randomIndex];
+        urls[randomIndex] = temporaryValue;
+    }
+
+    return urls;
+},
+
+	
+	clearTimeout(){
+		clearInterval(this.intervalId);
 	}
+
 }
 
 game.createClient();
@@ -104,19 +126,14 @@ game.createClient();
 
 $('.container').on('click', (e)=> {
 
-	let $card1 = $('.card').get(0);
-	
-	if($(e.target).attr('class') === 'card 1'){
-		
-		$($card1).css('background-image', 'url(https://banner2.kisspng.com/20171127/382/pineapple-png-vector-clipart-image-5a1c46718ae5b2.5079999715118024815689.jpg)');
-	}
+	// if($(e.target).attr('class') === 'card btn'){
+	// 	game.startGame();
+	// 	for(let i=0; i < urls.length; i++){
+	// 		let $cards = $('.card').get(i);
+	// 		$($cards).css('background-image', urls[i]);
+	// 	}
+	// }
 });
-
-
-
-
-
-
 
 
 

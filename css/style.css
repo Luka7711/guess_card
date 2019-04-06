@@ -81,6 +81,7 @@ body{
 	height:500px;
 	border:1px solid black;
 	margin:100px auto;
+	border-radius: 10px;
 }
 
 .card{
@@ -91,6 +92,12 @@ body{
 	margin-left:20px;
 	margin-top:30px;
 	background-size: cover;
+	border-radius: 10px;
+	background-position: center;
+}
+
+.hint{
+	padding-top:10px;
 }
 
 
