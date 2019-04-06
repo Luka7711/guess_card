@@ -107,9 +107,10 @@ const game = {
             this.roundTimer();
             for(let i = 0; i < urls.length; i++){
                 $cards = $('.card').get(i);
-                $($cards).css('background-image', urls[i]);
-                $($cards).addClass();
-            } 
+                 $($cards).addClass(this.data[i].item);
+                 $($cards).css({'background-image': this.data[i].img,
+                    'background-color':'lightblue'});
+                           } 
         }, 1000)
     },
 
