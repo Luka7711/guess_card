@@ -10,7 +10,7 @@ let foods = ['pizza', 'taco', 'burger', 'apple', 'peanuts', 'watermelon',
 
 
 
-    const urls = [
+const urls = [
 
     'url(https://png.pngtree.com/element_pic/16/11/03/cd52d8393a2f9f211e1056c2d6163a3c.jpg)',
     'url(https://icon2.kisspng.com/20180327/izq/kisspng-korean-taco-junk-food-fast-food-vegetarian-cuisine-tacos-5aba84673ebf85.575845881522173031257.jpg)',
@@ -32,11 +32,11 @@ let foods = ['pizza', 'taco', 'burger', 'apple', 'peanuts', 'watermelon',
 //creating class to get an object of food names and images
 
 class Data {
-    constructor(item, img){
+    constructor(item, img) {
         this.item = item;
         this.img = img;
     }
-} 
+}
 
 //to get an object of clients with certain choice of orders
 class Customer {
@@ -60,18 +60,18 @@ const game = {
 
     timer: 0,
 
-    gameOver:false,
+    gameOver: true,
 
-    round:10,
+    round: 10,
 
-    gameOn:false,
+    gameOn: false,
 
     data: [],
 
 
     //pushing food names & urls to append to divs element(class, backg-img)
-    dataForClasses:function(){
-        for(let i=0; i < foods.length; i++){
+    dataForClasses: function () {
+        for (let i = 0; i < foods.length; i++) {
             this.data.push(new Data(foods[i], urls[i]));
         }
     },
@@ -108,33 +108,45 @@ const game = {
             this.roundTimer();
             // console.log(this.timer);
 
-            if(this.timer === 4){
-            $('.card').css('background-image', 'none');
+            if (this.timer === 4) {
+                $('.card').css({
+                    'background-image': 'none',
+                    'background-color': 'white'
+                });
+            }
+
+            if (this.round === 0) {
+                alert('game over');
+                this.clearTimeout();
+                this.gameOn = true;
             }
         }, 1000)
     },
-    addingImgAndClassToDiv(){
-         for(let i = 0; i < urls.length; i++){
-                $cards = $('.card').get(i);
-                 $($cards).addClass(this.data[i].item);
-                 $($cards).css({'background-image': this.data[i].img,
-                    'background-color':'lightblue', 'display': 'none'});
-         } 
+    addingImgAndClassToDiv() {
+        for (let i = 0; i < urls.length; i++) {
+            $cards = $('.card').get(i);
+            $($cards).addClass(this.data[i].item);
+            $($cards).css({
+                'background-image': this.data[i].img,
+                'background-color': 'lightblue',
+                'display': 'none'
+            });
+        }
     },
-    roundTimer(){
-        $round = this.round-=1;
-       
-        $('.timer').text($round);
-        },
+    roundTimer() {
+        $round = this.round -= 1;
 
-    //The de-facto unbiased shuffle algorithm is the Fisher-Yates (aka Knuth) Shuffle.	
+        $('.timer').text($round);
+    },
+
+    //The de-facto unbiased shuffle algorithm is the Fisher-Yates (aka Knuth) Shuffle.  
     shuffleImages(data) {
 
         let currentIndex = this.data.length,
             temporaryValue, randomIndex;
 
         // While there remain elements to shuffle...
-            while (0 !== currentIndex) {
+        while (0 !== currentIndex) {
 
             // Pick a remaining element...
             randomIndex = Math.floor(Math.random() * currentIndex);
@@ -147,12 +159,12 @@ const game = {
         }
     },
 
-    shuffleClients(client){
-           let currentIndex = this.client.length,
+    shuffleClients(client) {
+        let currentIndex = this.client.length,
             temporaryValue, randomIndex;
 
         // While there remain elements to shuffle...
-            while (0 !== currentIndex) {
+        while (0 !== currentIndex) {
 
             // Pick a remaining element...
             randomIndex = Math.floor(Math.random() * currentIndex);
@@ -163,19 +175,19 @@ const game = {
             this.client[currentIndex] = this.client[randomIndex];
             this.client[randomIndex] = temporaryValue;
 
-       }         
+        }
     },
-    
+
     clearTimeout() {
         clearInterval(this.intervalId);
     },
 
-    sliceClassLeaveFoodItem(){
+    sliceClassLeaveFoodItem() {
         this.foodItem = this.foodClass.slice(5);
-        
+
     },
 
-    displayImg(){
+    displayImg() {
         $('.card').css('display', 'block');
 
     }
@@ -183,56 +195,45 @@ const game = {
 }
 
 
-// $('.container').on('click', (e) => {
-//     if($(e.target).attr('class')){
-//         game.dataForClasses();
-//         game.startGame();
-//         game.foodClass = $(e.target).attr('class');
-//         game.sliceClassLeaveFoodItem();
-//     if(game.foodItem === 'carrot'){
-//         console.log('Yeaaah i did it');
-//     }else{
-//         console.log('fail');
-//     }
-//     }
-// });
 
+$('body').on('click', (e) => {
+    if (game.gameOn !== true) {
+        if ($(e.target).attr('class') === 'start') {
+            game.dataForClasses();
+            game.shuffleImages();
+            game.addingImgAndClassToDiv()
+            console.log("Be ready, press 'show cards button'");
 
-$('body').on('click', (e)=>{
-    if(game.gameOn !== true){
-    if($(e.target).attr('class') === 'start'){
-        game.dataForClasses();
-        game.addingImgAndClassToDiv()
-        console.log("Be ready, press 'show cards button'");
-
+        }
+        if ($(e.target).attr('class') === 'card btn') {
+            game.displayImg();
+            game.startTimer();
+        }
     }
-    if($(e.target).attr('class') === 'card btn'){
-        game.displayImg();
-        game.startTimer();       
-    } 
-    }  
+    // if ($(e.target).attr('class') === 'card carrot') {
+    //     game.foodClass = $(e.target).attr('class');
+    //     game.sliceClassLeaveFoodItem()
+    //     alert(game.foodItem);
+    // }
+
+    // if ($(e.target).attr('class') === 'card bread') {
+    //     game.foodClass = $(e.target).attr('class');
+    //     game.sliceClassLeaveFoodItem()
+    //     alert(game.foodItem);
+    // }
+    // if ($(e.target).attr('class') === 'card burger') {
+    //     game.foodClass = $(e.target).attr('class');
+    //     game.sliceClassLeaveFoodItem()
+    //     alert(game.foodItem);
+    // }
+    // if ($(e.target).attr('class') === 'card cake') {
+    //     game.foodClass = $(e.target).attr('class');
+    //     game.sliceClassLeaveFoodItem()
+    //     alert(game.foodItem);
+    // }
+
 });
 
-
-
-
-
-
-// if(game.round === 7){
-//         console.log(game.timer);
-//         $('.card').css('background-image', 'none');
-//     }  
-
-
-
-
-
-
-// $('.container').on('click', (e) => {
-//     if($(e.target).attr('class') === 'card btn'){
-
-//     }
-// });
 
 
 
