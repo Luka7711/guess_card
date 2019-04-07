@@ -70,6 +70,8 @@ const game = {
 
     winningPoints:null,
 
+    currentClientOrder:[],
+
 
     //pushing food names & urls to append to divs element(class, backg-img)
     dataForClasses: function () {
@@ -209,8 +211,20 @@ const game = {
                 $li = $('<li/>');
                 $('.orders').append($($li));
                 $($li).text(this.client[0].food[i]);
+                this.currentClientOrder.push(this.client[0].food[i]);
          }
 
+    },
+
+    checkForSameItem(){
+        for(let i=0; i < this.currentClientOrder.length; i++){
+            if(this.foodItem === this.currentClientOrder[i]){
+                this.currentClientOrder.splice(i, 1);
+
+            }
+        }
+        console.log(this.foodItem);
+        console.log(this.currentClientOrder);
     }
 
 }
@@ -234,29 +248,14 @@ $('body').on('click', (e) => {
             game.displayImg();
             game.startTimer();
         }
-    }
-    if ($(e.target).attr('class') === 'card carrot') {
-        game.foodClass = $(e.target).attr('class');
-        game.sliceClassLeaveFoodItem()
-        alert(game.foodItem);
-    }
 
-    if ($(e.target).attr('class') === 'card bread') {
-        game.foodClass = $(e.target).attr('class');
-        game.sliceClassLeaveFoodItem()
-        alert(game.foodItem);
-    }
-    if ($(e.target).attr('class') === 'card burger') {
-        game.foodClass = $(e.target).attr('class');
-        game.sliceClassLeaveFoodItem()
-        alert(game.foodItem);
-    }
-    if ($(e.target).attr('class') === 'card cake') {
-        game.foodClass = $(e.target).attr('class');
-        game.sliceClassLeaveFoodItem()
-        alert(game.foodItem);
-    }
-
+       
+    }  if ($(e.target).attr('class') === 'card burger') {
+            game.foodClass = $(e.target).attr('class');
+            game.sliceClassLeaveFoodItem();
+            game.checkForSameItem();
+            console.log("lol");
+        }
 });
 
 
