@@ -102,19 +102,21 @@ const game = {
 
 
     //starting the time, to keep track of timer when game starts
-    startGame() {
+    startTimer() {
         this.intervalId = setInterval(() => {
             this.timer++;
             this.roundTimer();
-            for(let i = 0; i < urls.length; i++){
+       
+        }, 1000)
+    },
+    addingImgAndClassToDiv(){
+         for(let i = 0; i < urls.length; i++){
                 $cards = $('.card').get(i);
                  $($cards).addClass(this.data[i].item);
                  $($cards).css({'background-image': this.data[i].img,
-                    'background-color':'lightblue'});
-                           } 
-        }, 1000)
+                    'background-color':'lightblue', 'display':'none'});
+         } 
     },
-
     roundTimer(){
         $round = this.round-=1;
        
@@ -167,46 +169,68 @@ const game = {
     sliceClassLeaveFoodItem(){
         this.foodItem = this.foodClass.slice(5);
         
+    },
+
+    displayImg(){
+        $('.card').css('display', 'block');
+
     }
 
 }
 
 
-
-// $('form').on('click', (e)=>{
-// 	e.preventDefault();
-// 	const inputValue = $('#players').val();
-// 	// game.startGame();
+// $('.container').on('click', (e) => {
+//     if($(e.target).attr('class')){
+//         game.dataForClasses();
+//         game.startGame();
+//         game.foodClass = $(e.target).attr('class');
+//         game.sliceClassLeaveFoodItem();
+//     if(game.foodItem === 'carrot'){
+//         console.log('Yeaaah i did it');
+//     }else{
+//         console.log('fail');
+//     }
+//     }
 // });
 
-$('.container').on('click', (e) => {
- 
-// console.log($(e.target).attr('class')); 
 
- // if($(e.target).attr('class') === 'card btn'){
- //        game.createClient();
- //        game.dataForClasses();
- //        game.shuffleImages();
- //        game.shuffleClients();
- //    	game.startGame();
- //    }
-
-    if($(e.target).attr('class')){
+$('body').on('click', (e)=>{
+    if(game.gameOn !== true){
+    if($(e.target).attr('class') === 'start'){
         game.dataForClasses();
-        game.startGame();
-        game.foodClass = $(e.target).attr('class');
-        game.sliceClassLeaveFoodItem();
-        console.log(game.foodItem);
+        game.addingImgAndClassToDiv()
+        console.log("Be ready, press 'show cards button'");
+
     }
+    if($(e.target).attr('class') === 'card btn'){
+        game.displayImg();
+        game.startTimer();
+        
+
+    } 
+    }  
 });
 
 
-//declare the foodClass variable ;
-//assign class of div into foodClass variable;
-//this.foodItem = foodClass.slice(5);
-//if(this.fooditem === this.client[i].food)
-//cross food item in list
-//
+
+
+// if(game.round === 7){
+//         console.log(game.timer);
+//         $('.card').css('background-image', 'none');
+//     }  
+
+
+
+
+
+
+// $('.container').on('click', (e) => {
+//     if($(e.target).attr('class') === 'card btn'){
+
+//     }
+// });
+
+
 
 
 
