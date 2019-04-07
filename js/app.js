@@ -123,7 +123,7 @@ const game = {
     //The de-facto unbiased shuffle algorithm is the Fisher-Yates (aka Knuth) Shuffle.	
     shuffleImages(data) {
 
-        var currentIndex = this.data.length,
+        let currentIndex = this.data.length,
             temporaryValue, randomIndex;
 
         // While there remain elements to shuffle...
@@ -139,16 +139,37 @@ const game = {
             this.data[randomIndex] = temporaryValue;
         }
     },
+
+    shuffleClients(client){
+           let currentIndex = this.client.length,
+            temporaryValue, randomIndex;
+
+        // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = this.client[currentIndex];
+            this.client[currentIndex] = this.client[randomIndex];
+            this.client[randomIndex] = temporaryValue;
+
+       }         
+    },
     
     clearTimeout() {
         clearInterval(this.intervalId);
     },
 
+    checkForWin(){
+   
 }
 
-    game.createClient();
-    game.dataForClasses();
-    game.shuffleImages();
+}
+
+
 
 // $('form').on('click', (e)=>{
 // 	e.preventDefault();
@@ -157,10 +178,18 @@ const game = {
 // });
 
 $('.container').on('click', (e) => {
-    console.log($(e.target).css('background-image'));
+ 
+console.log($(e.target).attr('class')); 
+
  if($(e.target).attr('class') === 'card btn'){
+        game.createClient();
+        game.dataForClasses();
+        game.shuffleImages();
+        game.shuffleClients();
     	game.startGame();
+        game.checkForWin();
     }
+
 });
 
 
