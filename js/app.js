@@ -60,13 +60,15 @@ const game = {
 
     timer: 0,
 
-    gameOver: true,
+    gameOver: false,
 
     round: 10,
 
     gameOn: false,
 
     data: [],
+
+    winningPoints:null,
 
 
     //pushing food names & urls to append to divs element(class, backg-img)
@@ -114,13 +116,13 @@ const game = {
                     'background-color': 'white'
                 });
             }
-
+            //when timer of round reaches 0 game is over
             if (this.round === 0) {
                 alert('game over');
                 this.clearTimeout();
                 this.gameOn = false;
             }
-
+            //if game on turn off the button show cards
             if(this.gameOn === true){
                 $('.hint').off('click');
             }
