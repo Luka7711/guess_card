@@ -118,8 +118,13 @@ const game = {
             if (this.round === 0) {
                 alert('game over');
                 this.clearTimeout();
-                this.gameOn = true;
+                this.gameOn = false;
             }
+
+            if(this.gameOn === true){
+                $('.hint').off('click');
+            }
+
         }, 1000)
     },
     addingImgAndClassToDiv() {
@@ -190,6 +195,20 @@ const game = {
     displayImg() {
         $('.card').css('display', 'block');
 
+    },
+
+    displayClientsInWindow(){
+        this.shuffleClients();
+        $li = $('<li/>');
+        $('ul').append($($li));
+        $($li).text(this.client[0].name);
+        
+            for(let i=0; i < this.client[0].food.length; i++){
+                $li = $('<li/>');
+                $('ul').append($($li));
+                $($li).text(this.client[0].food[i]);
+         }
+
     }
 
 }
@@ -199,13 +218,16 @@ const game = {
 $('body').on('click', (e) => {
     if (game.gameOn !== true) {
         if ($(e.target).attr('class') === 'start') {
+            game.createClient();
+            game.displayClientsInWindow();
             game.dataForClasses();
             game.shuffleImages();
             game.addingImgAndClassToDiv()
             console.log("Be ready, press 'show cards button'");
 
         }
-        if ($(e.target).attr('class') === 'card btn') {
+        if ($(e.target).attr('class') === 'hint') {
+            game.gameOn = true;
             game.displayImg();
             game.startTimer();
         }

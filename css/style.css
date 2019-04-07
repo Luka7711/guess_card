@@ -1,6 +1,7 @@
 
 body{
 	margin:0 auto;
+	position: relative;
 }
 .container{
 	width:650px;
@@ -55,10 +56,47 @@ button{
 }
 
 
+.orders{
+	position:absolute;
+	top:20%;
+	left:80%;
+}
+
+li:first-child{
+	font-size:20px;
+}
+
+li:nth-child(-n+2){
+	list-style-type: none;
+	margin:5px 0;
+}
+
+li:nth-child(2){
+	font-size:24px;
+	font-family: 'helvetica';
+	color:brown;
+	letter-spacing: 3px;
+}
+
+li:nth-child(n+3){
+	color:green;
+	font-style:italic;
+	font-size:20px;
+	margin-top:10px;
+}
 
 
 
+.card:last-child{
+	position:relative;
+}
 
+.card:last-child span{
+	position:absolute;
+	top:30%;
+	left:10%;
+	cursor: pointer;
+}
 
 
 
