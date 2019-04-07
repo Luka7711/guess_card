@@ -202,12 +202,12 @@ const game = {
     displayClientsInWindow(){
         this.shuffleClients();
         $li = $('<li/>');
-        $('ul').append($($li));
+        $('.orders').append($($li));
         $($li).text(this.client[0].name);
         
             for(let i=0; i < this.client[0].food.length; i++){
                 $li = $('<li/>');
-                $('ul').append($($li));
+                $('.orders').append($($li));
                 $($li).text(this.client[0].food[i]);
          }
 
@@ -220,6 +220,7 @@ const game = {
 $('body').on('click', (e) => {
     if (game.gameOn !== true) {
         if ($(e.target).attr('class') === 'start') {
+            $('.start').css('display', 'none');
             game.createClient();
             game.displayClientsInWindow();
             game.dataForClasses();
