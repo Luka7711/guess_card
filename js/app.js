@@ -210,27 +210,27 @@ $('body').on('click', (e) => {
             game.startTimer();
         }
     }
-    // if ($(e.target).attr('class') === 'card carrot') {
-    //     game.foodClass = $(e.target).attr('class');
-    //     game.sliceClassLeaveFoodItem()
-    //     alert(game.foodItem);
-    // }
+    if ($(e.target).attr('class') === 'card carrot') {
+        game.foodClass = $(e.target).attr('class');
+        game.sliceClassLeaveFoodItem()
+        alert(game.foodItem);
+    }
 
-    // if ($(e.target).attr('class') === 'card bread') {
-    //     game.foodClass = $(e.target).attr('class');
-    //     game.sliceClassLeaveFoodItem()
-    //     alert(game.foodItem);
-    // }
-    // if ($(e.target).attr('class') === 'card burger') {
-    //     game.foodClass = $(e.target).attr('class');
-    //     game.sliceClassLeaveFoodItem()
-    //     alert(game.foodItem);
-    // }
-    // if ($(e.target).attr('class') === 'card cake') {
-    //     game.foodClass = $(e.target).attr('class');
-    //     game.sliceClassLeaveFoodItem()
-    //     alert(game.foodItem);
-    // }
+    if ($(e.target).attr('class') === 'card bread') {
+        game.foodClass = $(e.target).attr('class');
+        game.sliceClassLeaveFoodItem()
+        alert(game.foodItem);
+    }
+    if ($(e.target).attr('class') === 'card burger') {
+        game.foodClass = $(e.target).attr('class');
+        game.sliceClassLeaveFoodItem()
+        alert(game.foodItem);
+    }
+    if ($(e.target).attr('class') === 'card cake') {
+        game.foodClass = $(e.target).attr('class');
+        game.sliceClassLeaveFoodItem()
+        alert(game.foodItem);
+    }
 
 });
 
