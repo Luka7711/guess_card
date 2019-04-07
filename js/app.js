@@ -209,6 +209,7 @@ const game = {
         
             for(let i=0; i < this.client[0].food.length; i++){
                 $li = $('<li/>');
+                $($li).addClass('checkOut');
                 $('.orders').append($($li));
                 $($li).text(this.client[0].food[i]);
                 this.currentClientOrder.push(this.client[0].food[i]);
@@ -216,16 +217,20 @@ const game = {
 
     },
 
-    checkForSameItem(){
-        for(let i=0; i < this.currentClientOrder.length; i++){
-            if(this.foodItem === this.currentClientOrder[i]){
-                this.currentClientOrder.splice(i, 1);
-
-            }
+    checkForSameItem() {
+    let $li = $('.checkOut');
+    for (let i = 0; i < this.currentClientOrder.length; i++) {
+        if (this.foodItem === this.currentClientOrder[i]) {
+            this.currentClientOrder.splice(i, 1);
         }
-        console.log(this.foodItem);
-        console.log(this.currentClientOrder);
+        if (this.foodItem === $($li[i]).text()) {
+            $($li[i]).remove();
+        }
+
     }
+    console.log(this.foodItem);
+    console.log(this.currentClientOrder);
+}
 
 }
 
@@ -254,7 +259,6 @@ $('body').on('click', (e) => {
             game.foodClass = $(e.target).attr('class');
             game.sliceClassLeaveFoodItem();
             game.checkForSameItem();
-            console.log("lol");
         }
 });
 
