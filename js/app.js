@@ -68,6 +68,7 @@ const game = {
 
     data: [],
 
+
     //pushing food names & urls to append to divs element(class, backg-img)
     dataForClasses:function(){
         for(let i=0; i < foods.length; i++){
@@ -116,7 +117,7 @@ const game = {
 
     roundTimer(){
         $round = this.round-=1;
-        console.log($round);    
+       
         $('.timer').text($round);
         },
 
@@ -163,9 +164,10 @@ const game = {
         clearInterval(this.intervalId);
     },
 
-    checkForWin(){
-   
-}
+    sliceClassLeaveFoodItem(){
+        this.foodItem = this.foodClass.slice(5);
+        
+    }
 
 }
 
@@ -179,18 +181,62 @@ const game = {
 
 $('.container').on('click', (e) => {
  
-console.log($(e.target).attr('class')); 
+// console.log($(e.target).attr('class')); 
 
- if($(e.target).attr('class') === 'card btn'){
-        game.createClient();
+ // if($(e.target).attr('class') === 'card btn'){
+ //        game.createClient();
+ //        game.dataForClasses();
+ //        game.shuffleImages();
+ //        game.shuffleClients();
+ //    	game.startGame();
+ //    }
+
+    if($(e.target).attr('class')){
         game.dataForClasses();
-        game.shuffleImages();
-        game.shuffleClients();
-    	game.startGame();
-        game.checkForWin();
+        game.startGame();
+        game.foodClass = $(e.target).attr('class');
+        game.sliceClassLeaveFoodItem();
+        console.log(game.foodItem);
     }
-
 });
+
+
+//declare the foodClass variable ;
+//assign class of div into foodClass variable;
+//this.foodItem = foodClass.slice(5);
+//if(this.fooditem === this.client[i].food)
+//cross food item in list
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
