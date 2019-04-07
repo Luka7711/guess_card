@@ -50,6 +50,10 @@ button{
 	font-size:25px;
 }
 
+.hide{
+	border-radius: 1px solid green;
+}
+
 
 
 

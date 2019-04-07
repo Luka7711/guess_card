@@ -106,7 +106,11 @@ const game = {
         this.intervalId = setInterval(() => {
             this.timer++;
             this.roundTimer();
-       
+            // console.log(this.timer);
+
+            if(this.timer === 4){
+            $('.card').css('background-image', 'none');
+            }
         }, 1000)
     },
     addingImgAndClassToDiv(){
@@ -114,7 +118,7 @@ const game = {
                 $cards = $('.card').get(i);
                  $($cards).addClass(this.data[i].item);
                  $($cards).css({'background-image': this.data[i].img,
-                    'background-color':'lightblue', 'display':'none'});
+                    'background-color':'lightblue', 'display': 'none'});
          } 
     },
     roundTimer(){
@@ -204,12 +208,12 @@ $('body').on('click', (e)=>{
     }
     if($(e.target).attr('class') === 'card btn'){
         game.displayImg();
-        game.startTimer();
-        
-
+        game.startTimer();       
     } 
     }  
 });
+
+
 
 
 
