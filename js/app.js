@@ -13,17 +13,17 @@ let foods = ['pizza', 'taco', 'burger', 'apple', 'peanuts', 'watermelon',
 const urls = [
     'url(https://png.pngtree.com/element_pic/16/11/03/cd52d8393a2f9f211e1056c2d6163a3c.jpg)',
     'url(https://icon2.kisspng.com/20180327/izq/kisspng-korean-taco-junk-food-fast-food-vegetarian-cuisine-tacos-5aba84673ebf85.575845881522173031257.jpg)',
-    'url(https://png.pngtree.com/element_pic/17/02/23/8a1ce248ab44efc7b37adad0b7b2d933.jpg)',
+    'url(https://banner2.kisspng.com/20180331/laq/kisspng-hamburger-cheeseburger-slider-french-fries-hot-dog-burger-5abf7c643fa542.2562303615224986602607.jpg)',
     'url(http://pngimg.com/uploads/apple/apple_PNG12455.png)',
-    'url(http://www.sclance.com/pngs/peanuts-png/peanuts_png_998688.jpg)',
+    'url(https://pngimg.com/uploads/peanut/peanut_PNG18.png)',
     'url(https://banner2.kisspng.com/20180129/tle/kisspng-watermelon-seed-fruit-vegetable-watermelon-5a6eaadc992509.7018593115172021406273.jpg)',
-    'url(https://banner2.kisspng.com/20180206/wrw/kisspng-bakery-baguette-white-bread-baking-bread-png-image-5a794d2cdf62f9.756529391517899052915.jpg)',
+    'url(https://stongs.com/wp-content/uploads/2016/11/bread.png)',
     'url(https://c7.uihere.com/files/381/546/423/avocado-guacamole-euclidean-vector-fruit-avocado.jpg)',
     'url(https://banner2.kisspng.com/20171127/0f3/birthday-cake-png-clip-art-image-5a1c2f51907c66.2617623015117965615918.jpg)',
-    'url(http://pngimg.com/uploads/fish/fish_PNG25137.png)',
+    'url(https://banner2.kisspng.com/20180205/ahq/kisspng-goldfish-koi-clip-art-real-fish-png-clipart-5a7877e55de9b6.9831717215178444533847.jpg)',
     'url(https://www.culturedfoodlife.com/wp-content/uploads/2017/04/Carrot.png)',
     'url(http://pngimg.com/uploads/fried_chicken/fried_chicken_PNG14109.png)',
-    'url(https://png.pngtree.com/element_pic/00/16/07/0957805b9b6c3de.jpg)',
+    'url(https://banner2.kisspng.com/20180329/wgw/kisspng-beefsteak-grilling-spice-beef-tenderloin-steak-5abda14c655f29.7533364315223770364152.jpg)',
     'url(http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c1bd.png)'
 ];
 
@@ -55,8 +55,6 @@ const game = {
 
     randomFood: [],
 
-    patience: 7,
-
     timer: 0,
 
     gameOver: false,
@@ -67,13 +65,15 @@ const game = {
 
     data: [],
 
-    winningPoints:null,
-
     currentClientOrder:[],
 
     profit:0,
 
     served:0,
+
+    clicked: false,
+
+    nextClicked:false,
 
     //pushing food names & urls to append to divs element(class, backg-img)
     dataForClasses: function () {
@@ -114,33 +114,49 @@ const game = {
             this.roundTimer();
             // console.log(this.timer);
 
-            if (this.timer === 10) {
-                $('.card').css({
+            if (this.timer > 10) {
+                $('.card:not(:last-child)').not('.card_btn').css({
                     'background-image': 'none',
                     'background-color': 'white'
                 });
             }
             //when timer of round reaches 0 game is over
-            if (this.round === 0) {
-                alert('game over');
-                this.clearTimeout();
-                this.gameOn = false;
+          
 
-            }
             //if game on turn off the button show cards
-            if(this.gameOn === true){
-                $('.hint').off('click');
-
+           
+              
               if(this.currentClientOrder.length === 0){
-                game.clearTimeout();
+                this.clearTimeout();
                 this.gameOn = false;
                 $('.profit').text(this.profit+=this.cash);
                 $('.served').text(this.served+=1);
                 $('.next').css('display', 'block');
+
+            
             }
+              if (this.round === 0) {
+                alert('game over');
+                this.clearTimeout();
+                this.currentClientOrder = [];
+                this.gameOn = false;
+                this.gameOver = true;
+                $('.next').css('display', 'none');
+                this.removeNameAndFoodOrders();
+                this.removeImagesAndClass();
+            }
+             if(this.nextClicked === true){
+                $('.next').css('display', 'none');
+                this.nextClicked = false;
             }
 
-          
+            if(this.gameOver === true){
+                $('.play_again').css('display', 'block');
+            }
+            if(this.clicked === true){
+                $('.play_again').css('display', 'none');
+            }
+
 
         }, 1000)
     },
@@ -150,8 +166,8 @@ const game = {
             $($cards).addClass(this.data[i].item);
             $($cards).css({
                 'background-image': this.data[i].img,
-                'background-color': 'lightblue',
-                'display': 'none'
+                'background-color': 'lightblue'
+                // 'display': 'none'
             });
         }
     },
@@ -209,11 +225,6 @@ const game = {
 
     },
 
-    displayImg() {
-        $('.card').css('display', 'block');
-
-    },
-
     displayClientsInWindow(){
         this.shuffleClients();
         $li = $('<li/>');
@@ -254,9 +265,10 @@ const game = {
             this.round = 15;
 >>>>>>> logic
             $('.client_name').remove();
-             $('.timer').text(this.round);
+            $('.timer').text(this.round);
             this.removeImagesAndClass();
             this.displayClientsInWindow();
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
             // this.dataForClasses();
@@ -264,10 +276,16 @@ const game = {
             this.shuffleImages();
             this.addingImgAndClassToDiv();
 
+=======
+            this.shuffleImages();
+            this.addingImgAndClassToDiv();
+            this.startTimer();
+>>>>>>> logic
     },
 
     startGame(){
          $('.start').css('display', 'none');
+            this.showImagesInDivs();
             this.createClient();
             this.displayClientsInWindow();
             this.dataForClasses();
@@ -276,7 +294,7 @@ const game = {
     },
     showImagesInDivs(){
             this.gameOn = true;
-            this.displayImg();
+            // this.displayImg();
             this.startTimer();
 <<<<<<< HEAD
 
@@ -289,12 +307,22 @@ const game = {
         // set class attr to 'card'
         // set css background-images for each card to none
         $('.container div').attr('class', 'card');
-        $('.container div').css('background-image', 'none');
+        $('.container div:not(:last-child)').css('background-image', 'none');
+    },
+
+    showGameOver(){
+        $div = $('<div/>');
+        $($div).addClass('game_over');
+        $('body').append($div);
+        $h1 = $('<h1/>');
+        $div.append($h1);
+        $($h1).text("Game Over");
+    },
+
+    removeNameAndFoodOrders(){
+        $('.orders li').remove();
     }
 }
-    
-
-
 
 
 
@@ -304,12 +332,15 @@ $('body').on('click', (e) => {
         if ($(e.target).attr('class') === 'start') {
             game.startGame()
         }
-        if ($(e.target).attr('class') === 'hint') {
-            game.showImagesInDivs();
+        if ($(e.target).attr('class') === 'play_again') { 
+           game.restartForNextRound();
+           game.clicked = true;
         }
 
         if($(e.target).attr('class') === 'next'){
             game.restartForNextRound();
+            game.nextClicked = true;
+            
         }
                                             
     } 
@@ -404,19 +435,12 @@ $('body').on('click', (e) => {
 
 });
 
-let $it;
-$(document).on('click', (e) => {
-  $it = $(e.target);
-})
+
 
    
-
-
-
-
-
-
-
+$(function(){
+    $('.card').draggable();
+});
 
 
 

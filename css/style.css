@@ -2,6 +2,8 @@
 body{
 	margin:0 auto;
 	position: relative;
+	background-color: black;
+
 }
 .container{
 	width:650px;
@@ -27,6 +29,7 @@ body{
 	background-size: cover;
 	border-radius: 10px;
 	background-position: center;
+	background-color: white;
 }
 
 .hint{
@@ -52,6 +55,14 @@ body{
 	position:absolute;
 	top:88%;
 	left:47%;
+}
+
+.play_again{
+	font-size:30px;
+	position:absolute;
+	top:88%;
+	left:42%;
+	display: none;
 }
 
 .hide{
@@ -90,16 +101,14 @@ li:nth-child(n+3){
 
 
 
-.card:last-child{
-	position:relative;
+#anim{
+	background: white;
+	background-image: url("https://static.skillshare.com/uploads/project/07cfa76abe704c22dfec080709540933/f1b75a67");
+	background-position: center;
+	background-size: cover;
 }
 
-.card:last-child span{
-	position:absolute;
-	top:30%;
-	left:10%;
-	cursor: pointer;
-}
+
 
 .points_container{
 	position:absolute;
@@ -114,6 +123,12 @@ li:nth-child(n+3){
 	left:80%;
 	display: none;
 }
+
+
+.game_over{
+	
+}
+
 
 
 
