@@ -11,7 +11,6 @@ let foods = ['pizza', 'taco', 'burger', 'apple', 'peanuts', 'watermelon',
 
 
 const urls = [
-
     'url(https://png.pngtree.com/element_pic/16/11/03/cd52d8393a2f9f211e1056c2d6163a3c.jpg)',
     'url(https://icon2.kisspng.com/20180327/izq/kisspng-korean-taco-junk-food-fast-food-vegetarian-cuisine-tacos-5aba84673ebf85.575845881522173031257.jpg)',
     'url(https://png.pngtree.com/element_pic/17/02/23/8a1ce248ab44efc7b37adad0b7b2d933.jpg)',
@@ -218,6 +217,7 @@ const game = {
     displayClientsInWindow(){
         this.shuffleClients();
         $li = $('<li/>');
+        $($li).addClass('client_name');
         $('.orders').append($($li));
         $($li).text(this.client[0].name);
         
@@ -249,10 +249,11 @@ const game = {
     restartForNextRound(){
             this.timer = 0;
             this.round = 15;
-            $('li:nth-child(2)').remove();
+            $('.client_name').remove();
              $('.timer').text(this.round);
+            this.removeImagesAndClass();
             this.displayClientsInWindow();
-            this.dataForClasses();
+            // this.dataForClasses();
             this.shuffleImages();
             this.addingImgAndClassToDiv();
     },
@@ -271,15 +272,14 @@ const game = {
             this.startTimer();
     },
 
-    resetImagesAndClasses(){
-        //when round done do next
-        //you need to remove class of (food items)
-        //you need to remove images (urls)
+    removeImagesAndClass(){
+        // set class attr to 'card'
+        // set css background-images for each card to none
+        $('.container div').attr('class', 'card');
+        $('.container div').css('background-image', 'none');
     }
-
-
 }
-
+    
 
 
 
@@ -383,12 +383,12 @@ $('body').on('click', (e) => {
             game.checkForSameItem();
         }
 
-
-       
-
 });
 
-
+let $it;
+$(document).on('click', (e) => {
+  $it = $(e.target);
+})
 
    
 
