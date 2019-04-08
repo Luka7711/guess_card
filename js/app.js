@@ -413,9 +413,9 @@ $('body').on('click', (e) => {
 
 
    
-// $(function(){
-//     $('.card').draggable();
-// });
+$(function(){
+    $('.card').draggable();
+});
 
 
 
