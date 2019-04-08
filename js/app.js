@@ -76,7 +76,6 @@ const game = {
 
     served:0,
 
-
     //pushing food names & urls to append to divs element(class, backg-img)
     dataForClasses: function () {
         for (let i = 0; i < foods.length; i++) {
@@ -116,7 +115,7 @@ const game = {
             this.roundTimer();
             // console.log(this.timer);
 
-            if (this.timer === 5) {
+            if (this.timer === 10) {
                 $('.card').css({
                     'background-image': 'none',
                     'background-color': 'white'
@@ -127,6 +126,7 @@ const game = {
                 alert('game over');
                 this.clearTimeout();
                 this.gameOn = false;
+
             }
             //if game on turn off the button show cards
             if(this.gameOn === true){
@@ -134,8 +134,10 @@ const game = {
 
               if(this.currentClientOrder.length === 0){
                 game.clearTimeout();
+                this.gameOn = false;
                 $('.profit').text(this.profit+=this.cash);
                 $('.served').text(this.served+=1);
+                $('.next').css('display', 'block');
             }
             }
 
@@ -242,7 +244,32 @@ const game = {
     }
     console.log(this.foodItem);
     console.log(this.currentClientOrder);
-}
+    },
+
+    restartForNextRound(){
+            this.timer = 0;
+            this.round = 15;
+            $('li:nth-child(2)').remove();
+             $('.timer').text(this.round);
+            this.displayClientsInWindow();
+            this.dataForClasses();
+            this.shuffleImages();
+            this.addingImgAndClassToDiv();
+    },
+
+    startGame(){
+         $('.start').css('display', 'none');
+            this.createClient();
+            this.displayClientsInWindow();
+            this.dataForClasses();
+            this.shuffleImages();
+            this.addingImgAndClassToDiv();
+    },
+    showImagesInDivs(){
+            this.gameOn = true;
+            this.displayImg();
+            this.startTimer();
+    }
 
 }
 
@@ -253,22 +280,17 @@ const game = {
 
 $('body').on('click', (e) => {
     if (game.gameOn !== true) {
+       
         if ($(e.target).attr('class') === 'start') {
-            $('.start').css('display', 'none');
-            game.createClient();
-            game.displayClientsInWindow();
-            game.dataForClasses();
-            game.shuffleImages();
-            game.addingImgAndClassToDiv()
-            console.log("Be ready, press 'show cards button'");
-
+            game.startGame()
         }
         if ($(e.target).attr('class') === 'hint') {
-            game.gameOn = true;
-            game.displayImg();
-            game.startTimer();
+            game.showImagesInDivs();
         }
 
+        if($(e.target).attr('class') === 'next'){
+            game.restartForNextRound();
+        }
                                             
     }  if ($(e.target).attr('class') === 'card burger'){
             game.foodClass = $(e.target).attr('class');
@@ -353,6 +375,10 @@ $('body').on('click', (e) => {
             game.sliceClassLeaveFoodItem();
             game.checkForSameItem();
         }
+
+
+       
+
 });
 
 
