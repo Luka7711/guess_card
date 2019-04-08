@@ -61,7 +61,7 @@ body{
 	font-size:30px;
 	position:absolute;
 	top:88%;
-	left:47%;
+	left:42%;
 	display: none;
 }
 
@@ -101,17 +101,14 @@ li:nth-child(n+3){
 
 
 
-.card:last-child{
-	position:relative;
+#anim{
 	background: white;
+	background-image: url("https://static.skillshare.com/uploads/project/07cfa76abe704c22dfec080709540933/f1b75a67");
+	background-position: center;
+	background-size: cover;
 }
 
-.card:last-child span{
-	position:absolute;
-	top:30%;
-	left:10%;
-	cursor: pointer;
-}
+
 
 .points_container{
 	position:absolute;
@@ -126,6 +123,8 @@ li:nth-child(n+3){
 	left:80%;
 	display: none;
 }
+
+
 
 
 
