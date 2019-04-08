@@ -55,8 +55,6 @@ const game = {
 
     randomFood: [],
 
-    patience: 7,
-
     timer: 0,
 
     gameOver: false,
@@ -67,13 +65,13 @@ const game = {
 
     data: [],
 
-    winningPoints:null,
-
     currentClientOrder:[],
 
     profit:0,
 
     served:0,
+
+    clicked: false,
 
     //pushing food names & urls to append to divs element(class, backg-img)
     dataForClasses: function () {
@@ -130,7 +128,7 @@ const game = {
             //if game on turn off the button show cards
             if(this.gameOn === true){
                 $('.hint').off('click');
-
+              
               if(this.currentClientOrder.length === 0){
                 game.clearTimeout();
                 this.gameOn = false;
@@ -138,9 +136,13 @@ const game = {
                 $('.served').text(this.served+=1);
                 $('.next').css('display', 'block');
             }
+
             }
 
-          
+            if(this.clicked === true){
+                 // $('.next').css('display', 'none');
+                $('.next').off('click');
+            }
 
         }, 1000)
     },
@@ -296,6 +298,7 @@ $('body').on('click', (e) => {
         }
 
         if($(e.target).attr('class') === 'next'){
+            game.clicked = true;
             game.restartForNextRound();
         }
                                             
