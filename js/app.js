@@ -269,7 +269,14 @@ const game = {
             this.gameOn = true;
             this.displayImg();
             this.startTimer();
+    },
+
+    resetImagesAndClasses(){
+        //when round done do next
+        //you need to remove class of (food items)
+        //you need to remove images (urls)
     }
+
 
 }
 
