@@ -62,7 +62,7 @@ const game = {
 
     gameOver: false,
 
-    round: 15,
+    round: 150,
 
     gameOn: false,
 
@@ -218,6 +218,7 @@ const game = {
     displayClientsInWindow(){
         this.shuffleClients();
         $li = $('<li/>');
+        $($li).addClass('client_name');
         $('.orders').append($($li));
         $($li).text(this.client[0].name);
         
@@ -248,13 +249,13 @@ const game = {
 
     restartForNextRound(){
             this.timer = 0;
-            this.round = 15;
-            $('li:nth-child(2)').remove();
+            this.round = 150;
+            $('.client_name').remove();
              $('.timer').text(this.round);
             this.displayClientsInWindow();
-            this.dataForClasses();
             this.shuffleImages();
             this.addingImgAndClassToDiv();
+
     },
 
     startGame(){
@@ -269,6 +270,7 @@ const game = {
             this.gameOn = true;
             this.displayImg();
             this.startTimer();
+
     }
 
 }
@@ -292,7 +294,9 @@ $('body').on('click', (e) => {
             game.restartForNextRound();
         }
                                             
-    }  if ($(e.target).attr('class') === 'card burger'){
+    } 
+
+    if ($(e.target).attr('class') === 'card burger'){
             game.foodClass = $(e.target).attr('class');
             game.sliceClassLeaveFoodItem();
             game.checkForSameItem();
@@ -375,9 +379,7 @@ $('body').on('click', (e) => {
             game.sliceClassLeaveFoodItem();
             game.checkForSameItem();
         }
-
-
-       
+  
 
 });
 
