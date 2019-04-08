@@ -259,28 +259,16 @@ const game = {
 
     restartForNextRound(){
             this.timer = 0;
-<<<<<<< HEAD
-            this.round = 150;
-=======
             this.round = 15;
->>>>>>> logic
+
             $('.client_name').remove();
             $('.timer').text(this.round);
             this.removeImagesAndClass();
             this.displayClientsInWindow();
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-            // this.dataForClasses();
->>>>>>> logic
-            this.shuffleImages();
-            this.addingImgAndClassToDiv();
-
-=======
             this.shuffleImages();
             this.addingImgAndClassToDiv();
             this.startTimer();
->>>>>>> logic
+
     },
 
     startGame(){
@@ -296,12 +284,8 @@ const game = {
             this.gameOn = true;
             // this.displayImg();
             this.startTimer();
-<<<<<<< HEAD
 
-    }
-=======
     },
->>>>>>> logic
 
     removeImagesAndClass(){
         // set class attr to 'card'
@@ -428,10 +412,6 @@ $('body').on('click', (e) => {
             game.sliceClassLeaveFoodItem();
             game.checkForSameItem();
         }
-<<<<<<< HEAD
-  
-=======
->>>>>>> logic
 
 });
 
