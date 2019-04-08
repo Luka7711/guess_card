@@ -410,17 +410,12 @@ $('body').on('click', (e) => {
 
 });
 
-let $it;
-$(document).on('click', (e) => {
-  $it = $(e.target);
-})
+
 
    
-
-
-
-
-
+// $(function(){
+//     $('.card').draggable();
+// });
 
 
 
