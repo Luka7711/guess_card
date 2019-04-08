@@ -15,12 +15,12 @@ const urls = [
     'url(https://icon2.kisspng.com/20180327/izq/kisspng-korean-taco-junk-food-fast-food-vegetarian-cuisine-tacos-5aba84673ebf85.575845881522173031257.jpg)',
     'url(https://png.pngtree.com/element_pic/17/02/23/8a1ce248ab44efc7b37adad0b7b2d933.jpg)',
     'url(http://pngimg.com/uploads/apple/apple_PNG12455.png)',
-    'url(http://www.sclance.com/pngs/peanuts-png/peanuts_png_998688.jpg)',
+    'url(https://pngimg.com/uploads/peanut/peanut_PNG18.png)',
     'url(https://banner2.kisspng.com/20180129/tle/kisspng-watermelon-seed-fruit-vegetable-watermelon-5a6eaadc992509.7018593115172021406273.jpg)',
     'url(https://banner2.kisspng.com/20180206/wrw/kisspng-bakery-baguette-white-bread-baking-bread-png-image-5a794d2cdf62f9.756529391517899052915.jpg)',
     'url(https://c7.uihere.com/files/381/546/423/avocado-guacamole-euclidean-vector-fruit-avocado.jpg)',
     'url(https://banner2.kisspng.com/20171127/0f3/birthday-cake-png-clip-art-image-5a1c2f51907c66.2617623015117965615918.jpg)',
-    'url(http://pngimg.com/uploads/fish/fish_PNG25137.png)',
+    'url(https://banner2.kisspng.com/20180205/ahq/kisspng-goldfish-koi-clip-art-real-fish-png-clipart-5a7877e55de9b6.9831717215178444533847.jpg)',
     'url(https://www.culturedfoodlife.com/wp-content/uploads/2017/04/Carrot.png)',
     'url(http://pngimg.com/uploads/fried_chicken/fried_chicken_PNG14109.png)',
     'url(https://png.pngtree.com/element_pic/00/16/07/0957805b9b6c3de.jpg)',
@@ -115,16 +115,12 @@ const game = {
             if (this.timer === 10) {
                 $('.card').css({
                     'background-image': 'none',
-                    'background-color': 'white'
+                    'background-color': 'white'``
                 });
             }
             //when timer of round reaches 0 game is over
-            if (this.round === 0) {
-                alert('game over');
-                this.clearTimeout();
-                this.gameOn = false;
+          
 
-            }
             //if game on turn off the button show cards
             if(this.gameOn === true){
                 $('.hint').off('click');
@@ -137,12 +133,24 @@ const game = {
                 $('.next').css('display', 'block');
             }
 
-            }
-
-            if(this.clicked === true){
-                 // $('.next').css('display', 'none');
+            if(this.currentClientOrder.length ){
                 $('.next').off('click');
             }
+
+              if (this.round === 0) {
+                alert('game over');
+                this.clearTimeout();
+                this.gameOn = false;
+                this.gameOver = true;
+
+            }
+
+            }
+
+            // if(this.clicked === true){
+            //      // $('.next').css('display', 'none');
+            //     $('.next').off('click');
+            // }
 
         }, 1000)
     },
@@ -152,8 +160,8 @@ const game = {
             $($cards).addClass(this.data[i].item);
             $($cards).css({
                 'background-image': this.data[i].img,
-                'background-color': 'lightblue',
-                'display': 'none'
+                'background-color': 'lightblue'
+                // 'display': 'none'
             });
         }
     },
@@ -211,11 +219,6 @@ const game = {
 
     },
 
-    displayImg() {
-        $('.card').css('display', 'block');
-
-    },
-
     displayClientsInWindow(){
         this.shuffleClients();
         $li = $('<li/>');
@@ -255,13 +258,14 @@ const game = {
              $('.timer').text(this.round);
             this.removeImagesAndClass();
             this.displayClientsInWindow();
-            // this.dataForClasses();
             this.shuffleImages();
             this.addingImgAndClassToDiv();
+            this.startTimer();
     },
 
     startGame(){
          $('.start').css('display', 'none');
+            this.showImagesInDivs();
             this.createClient();
             this.displayClientsInWindow();
             this.dataForClasses();
@@ -270,7 +274,7 @@ const game = {
     },
     showImagesInDivs(){
             this.gameOn = true;
-            this.displayImg();
+            // this.displayImg();
             this.startTimer();
     },
 
@@ -279,11 +283,23 @@ const game = {
         // set css background-images for each card to none
         $('.container div').attr('class', 'card');
         $('.container div').css('background-image', 'none');
+    },
+
+    showGameOver(){
+        $div = $('<div/>');
+        $($div).addClass('game_over');
+        $('body').append($div);
+        $h1 = $('<h1/>');
+        $div.append($h1);
+        $($h1).text("Game Over");
     }
+
+    // hideImgAndOnPlayAgain(){
+    //       $('.card').css('background-image', 'none');
+    //        $('.play_again').css('display', 'block');
+    // }
+
 }
-    
-
-
 
 
 
@@ -293,13 +309,14 @@ $('body').on('click', (e) => {
         if ($(e.target).attr('class') === 'start') {
             game.startGame()
         }
-        if ($(e.target).attr('class') === 'hint') {
-            game.showImagesInDivs();
-        }
+        // if ($(e.target).attr('class') === 'play_again') {
+        //     game.showImagesInDivs();
+      
+        // }
 
         if($(e.target).attr('class') === 'next'){
-            game.clicked = true;
             game.restartForNextRound();
+            
         }
                                             
     }  if ($(e.target).attr('class') === 'card burger'){
@@ -394,8 +411,6 @@ $(document).on('click', (e) => {
 })
 
    
-
-
 
 
 

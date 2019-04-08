@@ -2,6 +2,8 @@
 body{
 	margin:0 auto;
 	position: relative;
+	background-color: black;
+
 }
 .container{
 	width:650px;
@@ -27,6 +29,7 @@ body{
 	background-size: cover;
 	border-radius: 10px;
 	background-position: center;
+	background-color: white;
 }
 
 .hint{
@@ -52,6 +55,14 @@ body{
 	position:absolute;
 	top:88%;
 	left:47%;
+}
+
+.play_again{
+	font-size:30px;
+	position:absolute;
+	top:88%;
+	left:47%;
+	display: none;
 }
 
 .hide{
@@ -92,6 +103,7 @@ li:nth-child(n+3){
 
 .card:last-child{
 	position:relative;
+	background: white;
 }
 
 .card:last-child span{
