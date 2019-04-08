@@ -112,31 +112,26 @@ const game = {
             this.roundTimer();
             // console.log(this.timer);
 
-            if (this.timer === 10) {
+            if (this.timer > 10) {
                 $('.card').css({
                     'background-image': 'none',
-                    'background-color': 'white'``
+                    'background-color': 'white'
                 });
             }
             //when timer of round reaches 0 game is over
           
 
             //if game on turn off the button show cards
-            if(this.gameOn === true){
-                $('.hint').off('click');
+           
               
               if(this.currentClientOrder.length === 0){
-                game.clearTimeout();
+                this.clearTimeout();
                 this.gameOn = false;
                 $('.profit').text(this.profit+=this.cash);
                 $('.served').text(this.served+=1);
                 $('.next').css('display', 'block');
+            
             }
-
-            if(this.currentClientOrder.length ){
-                $('.next').off('click');
-            }
-
               if (this.round === 0) {
                 alert('game over');
                 this.clearTimeout();
@@ -144,13 +139,6 @@ const game = {
                 this.gameOver = true;
 
             }
-
-            }
-
-            // if(this.clicked === true){
-            //      // $('.next').css('display', 'none');
-            //     $('.next').off('click');
-            // }
 
         }, 1000)
     },
