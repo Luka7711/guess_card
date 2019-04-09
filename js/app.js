@@ -139,18 +139,16 @@ const game = {
             
             }
               if (this.round === 0) {
-               
-                alert('game over');
+                this.clearTimeout();
+                this.displayGameOver();
                 this.timer = 0;
                 this.progressValue = 0;
-                this.clearTimeout();
                 this.currentClientOrder = [];
                 this.gameOn = false;
                 this.gameOver = true;
-                $('.next').css('display', 'none');
                 this.removeNameAndFoodOrders();
                 this.removeImagesAndClass();
-                $('.play_again').css('display', 'block');
+             
             }
              if(this.nextClicked === true){
                 $('.next').css('display', 'none');
@@ -160,9 +158,9 @@ const game = {
             if(this.gameOver === true){
                 $('.play_again').css('display', 'block');
             }
-            if(this.clicked === true){
-                $('.play_again').css('display', 'none');
-            }
+            // if(this.clicked === true){
+            //     $('.play_again').css('display', 'none');
+            // }
         
         
         }, 1000)
@@ -305,6 +303,11 @@ const game = {
         $h1 = $('<h1/>');
         $div.append($h1);
         $($h1).text("Game Over");
+        $button = $('<button/>');
+        $($button).addClass('play_again');
+        $div.append($button);
+        $($button).text('Play again');
+        $('.game_over').css('display', 'block');
     },
 
     removeNameAndFoodOrders(){
@@ -313,6 +316,7 @@ const game = {
     },
 
     playAgain(){
+
         $('.profit').text(0);
         $('.served').text(0);
         $('progress').attr('value', this.progressValue);
@@ -332,10 +336,12 @@ $('body').on('click', (e) => {
             game.startGame();
         }
         if ($(e.target).attr('class') === 'play_again') { 
+            $('.game_over').remove();
             game.playAgain();
         }
 
         if($(e.target).attr('class') === 'next'){
+            $('.next').css('display', 'none');
             game.restartForNextRound();
             game.nextClicked = true;
             
@@ -426,11 +432,6 @@ $('body').on('click', (e) => {
         }
 
 });
-
-
-
-
-
 
 
 
