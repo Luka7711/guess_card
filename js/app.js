@@ -136,14 +136,17 @@ const game = {
             
             }
               if (this.round === 0) {
-                alert('game over');
-                this.clearTimeout();
-                this.currentClientOrder = [];
-                this.gameOn = false;
-                this.gameOver = true;
-                $('.next').css('display', 'none');
-                this.removeNameAndFoodOrders();
-                this.removeImagesAndClass();
+               
+                   alert('game over');
+                   this.timer = 0;
+                     this.clearTimeout();
+                     this.currentClientOrder = [];
+        this.gameOn = false;
+        this.gameOver = true;
+        $('.next').css('display', 'none');
+        this.removeNameAndFoodOrders();
+        this.removeImagesAndClass();
+        $('.play_again').css('display', 'block');
             }
              if(this.nextClicked === true){
                 $('.next').css('display', 'none');
@@ -280,7 +283,6 @@ const game = {
     },
     showImagesInDivs(){
             this.gameOn = true;
-            // this.displayImg();
             this.startTimer();
     },
 
@@ -291,7 +293,7 @@ const game = {
         $('.container div:not(:last-child)').css('background-image', 'none');
     },
 
-    showGameOver(){
+    displayGameOver(){
         $div = $('<div/>');
         $($div).addClass('game_over');
         $('body').append($div);
@@ -301,8 +303,23 @@ const game = {
     },
 
     removeNameAndFoodOrders(){
-        $('.orders li').remove();
+        $('.client_name').remove();
+        $('.checkOut').remove();
+    },
+
+    playAgain(){
+        $('.profit').text(0);
+        $('.served').text(0);
+        this.restartForNextRound();
+        this.clicked = true;
+         
+    },
+
+    gameOver(){
+    
     }
+
+
 }
 
 
@@ -311,11 +328,10 @@ $('body').on('click', (e) => {
     if (game.gameOn !== true) {
        
         if ($(e.target).attr('class') === 'start') {
-            game.startGame()
+            game.startGame();
         }
         if ($(e.target).attr('class') === 'play_again') { 
-           game.restartForNextRound();
-           game.clicked = true;
+            game.playAgain();
         }
 
         if($(e.target).attr('class') === 'next'){
@@ -412,10 +428,6 @@ $('body').on('click', (e) => {
 
 
 
-   
-$(function(){
-    $('.card').draggable();
-});
 
 
 
