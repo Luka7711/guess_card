@@ -75,6 +75,9 @@ const game = {
 
     nextClicked:false,
 
+    progressValue: 0,
+
+
     //pushing food names & urls to append to divs element(class, backg-img)
     dataForClasses: function () {
         for (let i = 0; i < foods.length; i++) {
@@ -131,22 +134,24 @@ const game = {
                 this.gameOn = false;
                 $('.profit').text(this.profit+=this.cash);
                 $('.served').text(this.served+=1);
+                $('progress').attr('value', this.progressValue+=50);
                 $('.next').css('display', 'block');
 
             
             }
               if (this.round === 0) {
                
-                   alert('game over');
-                   this.timer = 0;
-                     this.clearTimeout();
-                     this.currentClientOrder = [];
-        this.gameOn = false;
-        this.gameOver = true;
-        $('.next').css('display', 'none');
-        this.removeNameAndFoodOrders();
-        this.removeImagesAndClass();
-        $('.play_again').css('display', 'block');
+                alert('game over');
+                this.timer = 0;
+                this.progressValue = 0;
+                this.clearTimeout();
+                this.currentClientOrder = [];
+                this.gameOn = false;
+                this.gameOver = true;
+                $('.next').css('display', 'none');
+                this.removeNameAndFoodOrders();
+                this.removeImagesAndClass();
+                $('.play_again').css('display', 'block');
             }
              if(this.nextClicked === true){
                 $('.next').css('display', 'none');
@@ -310,15 +315,11 @@ const game = {
     playAgain(){
         $('.profit').text(0);
         $('.served').text(0);
+        $('progress').attr('value', this.progressValue);
         this.restartForNextRound();
         this.clicked = true;
          
-    },
-
-    gameOver(){
-    
     }
-
 
 }
 
@@ -425,9 +426,6 @@ $('body').on('click', (e) => {
         }
 
 });
-
-
-
 
 
 

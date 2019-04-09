@@ -124,10 +124,21 @@ li:nth-child(n+3){
 	display: none;
 }
 
-
-.game_over{
-	
+progress{
+	background-color:white;
+	width:200px;
 }
+
+
+
+.points_board li:nth-child(5){
+	list-style-type: none;
+}
+
+.points_board li, .orders li{
+	font-size: 25px;
+}
+
 
 
 
