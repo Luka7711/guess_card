@@ -3,8 +3,8 @@ let names = ['Greg', 'Bill', 'Anil', 'Porter', 'Thiago', 'Lana', 'Wes',
     'Justin', 'Tanya', 'Zack', 'Clayton', 'Connaught', 'Reuben', 'Jacob'
 ];
 
-let foods = ['pizza', 'taco', 'burger', 'apple', 'peanuts', 'watermelon',
-    'bread', 'avocado', 'cake', 'fish', 'carrot', 'chicken', 'steak', 'ice-cream'
+let foods = ['pizza', 'taco', 'burger', 'fish', 'fries', 'watermelon',
+    'bread', 'coffee', 'cake', 'sushi', 'beer', 'chicken', 'steak', 'ice-cream'
 ];
 
 
@@ -14,15 +14,15 @@ const urls = [
     'url(https://png.pngtree.com/element_pic/16/11/03/cd52d8393a2f9f211e1056c2d6163a3c.jpg)',
     'url(https://icon2.kisspng.com/20180327/izq/kisspng-korean-taco-junk-food-fast-food-vegetarian-cuisine-tacos-5aba84673ebf85.575845881522173031257.jpg)',
     'url(https://banner2.kisspng.com/20180331/laq/kisspng-hamburger-cheeseburger-slider-french-fries-hot-dog-burger-5abf7c643fa542.2562303615224986602607.jpg)',
-    'url(http://pngimg.com/uploads/apple/apple_PNG12455.png)',
-    'url(https://pngimg.com/uploads/peanut/peanut_PNG18.png)',
+    'url(https://banner2.kisspng.com/20180330/bhq/kisspng-jamaican-cuisine-fried-fish-escabeche-seafood-fried-fish-5abdd5f588fdc0.8275364015223905175611.jpg)',
+    'url(https://banner2.kisspng.com/20180130/xxq/kisspng-french-fries-frying-french-fries-5a703328280e04.5407720715173025681641.jpg)',
     'url(https://banner2.kisspng.com/20180129/tle/kisspng-watermelon-seed-fruit-vegetable-watermelon-5a6eaadc992509.7018593115172021406273.jpg)',
     'url(https://stongs.com/wp-content/uploads/2016/11/bread.png)',
-    'url(https://c7.uihere.com/files/381/546/423/avocado-guacamole-euclidean-vector-fruit-avocado.jpg)',
-    'url(https://banner2.kisspng.com/20171127/0f3/birthday-cake-png-clip-art-image-5a1c2f51907c66.2617623015117965615918.jpg)',
-    'url(https://banner2.kisspng.com/20180205/ahq/kisspng-goldfish-koi-clip-art-real-fish-png-clipart-5a7877e55de9b6.9831717215178444533847.jpg)',
-    'url(https://www.culturedfoodlife.com/wp-content/uploads/2017/04/Carrot.png)',
-    'url(http://pngimg.com/uploads/fried_chicken/fried_chicken_PNG14109.png)',
+    'url(http://www.stickpng.com/assets/images/580b57fbd9996e24bc43c0e8.png)',
+    'url(http://clipart-library.com/images/8TG6aXAEc.png)',
+    'url(http://pngimg.com/uploads/sushi/sushi_PNG9266.png)',
+    'url(http://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Beer-Mug-PNG-Transparent-Image-1.png)',
+    'url(https://banner2.kisspng.com/20180130/rgq/kisspng-buffalo-wing-fried-chicken-chicken-fingers-kfc-bar-delicious-chicken-wings-5a703380170b12.6268266015173026560944.jpg)',
     'url(https://banner2.kisspng.com/20180329/wgw/kisspng-beefsteak-grilling-spice-beef-tenderloin-steak-5abda14c655f29.7533364315223770364152.jpg)',
     'url(http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c1bd.png)'
 ];
@@ -75,6 +75,9 @@ const game = {
 
     nextClicked: false,
 
+    progressValue: 0,
+
+
     //pushing food names & urls to append to divs element(class, backg-img)
     dataForClasses: function () {
         for (let i = 0; i < foods.length; i++) {
@@ -120,24 +123,42 @@ const game = {
                     'background-color': 'white'
                 });
             }
+<<<<<<< HEAD
             //when timer of round reaches 0 game is over
 
+=======
+>>>>>>> logic
 
+            //when timer of round reaches 0 game is over
             //if game on turn off the button show cards
 
             if (this.currentClientOrder.length === 0) {
                 this.clearTimeout();
                 this.gameOn = false;
+<<<<<<< HEAD
                 $('.profit').text(this.profit += this.cash);
                 $('.served').text(this.served += 1);
+=======
+                $('.profit').text(this.profit+=this.cash);
+                $('.served').text(this.served+=1);
+                $('progress').attr('value', this.progressValue+=50);
+>>>>>>> logic
                 $('.next').css('display', 'block');
 
 
             }
+<<<<<<< HEAD
             if (this.round === 0) {
 
                 alert('game over');
                 this.timer = 0;
+=======
+              if (this.round === 0) {
+               
+                alert('game over');
+                this.timer = 0;
+                this.progressValue = 0;
+>>>>>>> logic
                 this.clearTimeout();
                 this.currentClientOrder = [];
                 this.gameOn = false;
@@ -158,8 +179,14 @@ const game = {
             if (this.clicked === true) {
                 $('.play_again').css('display', 'none');
             }
+<<<<<<< HEAD
+=======
+        
+        
+>>>>>>> logic
         }, 1000)
     },
+
     addingImgAndClassToDiv() {
         for (let i = 0; i < urls.length; i++) {
             $cards = $('.card').get(i);
@@ -174,7 +201,7 @@ const game = {
     roundTimer() {
         $round = this.round -= 1;
 
-        $('.timer').text($round);
+        $('.timer').text(`:${$round}`);
     },
 
     //The de-facto unbiased shuffle algorithm is the Fisher-Yates (aka Knuth) Shuffle.  
@@ -307,15 +334,19 @@ const game = {
     playAgain() {
         $('.profit').text(0);
         $('.served').text(0);
+        $('progress').attr('value', this.progressValue);
         this.restartForNextRound();
         this.clicked = true;
+<<<<<<< HEAD
 
     },
 
     gameOver() {
 
+=======
+         
+>>>>>>> logic
     }
-
 
 }
 
@@ -337,12 +368,129 @@ $('body').on('click', (e) => {
 
         }
 
+<<<<<<< HEAD
     }
     if ($(e.target).attr('class') === 'card burger') {
         game.foodClass = $(e.target).attr('class');
         game.sliceClassLeaveFoodItem();
         game.checkForSameItem();
     }
+=======
+        if ($(e.target).attr('class') === 'card steak'){
+            game.foodClass = $(e.target).attr('class');
+            game.sliceClassLeaveFoodItem();
+            game.checkForSameItem();
+        }
+
+        if ($(e.target).attr('class') === 'card chicken'){
+            game.foodClass = $(e.target).attr('class');
+            game.sliceClassLeaveFoodItem();
+            game.checkForSameItem();
+        }
+
+        if ($(e.target).attr('class') === 'card sushi'){
+            game.foodClass = $(e.target).attr('class');
+            game.sliceClassLeaveFoodItem();
+            game.checkForSameItem();
+        }
+
+        if ($(e.target).attr('class') === 'card ice-cream'){
+            game.foodClass = $(e.target).attr('class');
+            game.sliceClassLeaveFoodItem();
+            game.checkForSameItem();
+        }
+
+        if ($(e.target).attr('class') === 'card cake'){
+            game.foodClass = $(e.target).attr('class');
+            game.sliceClassLeaveFoodItem();
+            game.checkForSameItem();
+        }
+
+        if ($(e.target).attr('class') === 'card coffee'){
+            game.foodClass = $(e.target).attr('class');
+            game.sliceClassLeaveFoodItem();
+            game.checkForSameItem();
+        }
+
+        if ($(e.target).attr('class') === 'card fish'){
+            game.foodClass = $(e.target).attr('class');
+            game.sliceClassLeaveFoodItem();
+            game.checkForSameItem();
+        }
+
+        if ($(e.target).attr('class') === 'card fries'){
+            game.foodClass = $(e.target).attr('class');
+            game.sliceClassLeaveFoodItem();
+            game.checkForSameItem();
+        }
+
+        if ($(e.target).attr('class') === 'card watermelon'){
+            game.foodClass = $(e.target).attr('class');
+            game.sliceClassLeaveFoodItem();
+            game.checkForSameItem();
+        }
+
+        if ($(e.target).attr('class') === 'card beer'){
+            game.foodClass = $(e.target).attr('class');
+            game.sliceClassLeaveFoodItem();
+            game.checkForSameItem();
+        }
+
+        if ($(e.target).attr('class') === 'card bread'){
+            game.foodClass = $(e.target).attr('class');
+            game.sliceClassLeaveFoodItem();
+            game.checkForSameItem();
+        }
+
+        if ($(e.target).attr('class') === 'card pizza'){
+            game.foodClass = $(e.target).attr('class');
+            game.sliceClassLeaveFoodItem();
+            game.checkForSameItem();
+        }
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> logic
 
     if ($(e.target).attr('class') === 'card taco') {
         game.foodClass = $(e.target).attr('class');
@@ -404,6 +552,7 @@ $('body').on('click', (e) => {
         game.checkForSameItem();
     }
 
+<<<<<<< HEAD
     if ($(e.target).attr('class') === 'card carrot') {
         game.foodClass = $(e.target).attr('class');
         game.sliceClassLeaveFoodItem();
@@ -423,3 +572,5 @@ $('body').on('click', (e) => {
     }
 
 });
+=======
+>>>>>>> logic
