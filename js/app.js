@@ -59,21 +59,21 @@ const game = {
 
     gameOver: false,
 
-    round: 150,
+    round: 15,
 
     gameOn: false,
 
     data: [],
 
-    currentClientOrder:[],
+    currentClientOrder: [],
 
-    profit:0,
+    profit: 0,
 
-    served:0,
+    served: 0,
 
     clicked: false,
 
-    nextClicked:false,
+    nextClicked: false,
 
     //pushing food names & urls to append to divs element(class, backg-img)
     dataForClasses: function () {
@@ -121,22 +121,23 @@ const game = {
                 });
             }
             //when timer of round reaches 0 game is over
-          
+
 
             //if game on turn off the button show cards
-           
-              
-              if(this.currentClientOrder.length === 0){
+
+            if (this.currentClientOrder.length === 0) {
                 this.clearTimeout();
                 this.gameOn = false;
-                $('.profit').text(this.profit+=this.cash);
-                $('.served').text(this.served+=1);
+                $('.profit').text(this.profit += this.cash);
+                $('.served').text(this.served += 1);
                 $('.next').css('display', 'block');
 
-            
+
             }
-              if (this.round === 0) {
+            if (this.round === 0) {
+
                 alert('game over');
+                this.timer = 0;
                 this.clearTimeout();
                 this.currentClientOrder = [];
                 this.gameOn = false;
@@ -144,20 +145,19 @@ const game = {
                 $('.next').css('display', 'none');
                 this.removeNameAndFoodOrders();
                 this.removeImagesAndClass();
+                $('.play_again').css('display', 'block');
             }
-             if(this.nextClicked === true){
+            if (this.nextClicked === true) {
                 $('.next').css('display', 'none');
                 this.nextClicked = false;
             }
 
-            if(this.gameOver === true){
+            if (this.gameOver === true) {
                 $('.play_again').css('display', 'block');
             }
-            if(this.clicked === true){
+            if (this.clicked === true) {
                 $('.play_again').css('display', 'none');
             }
-
-
         }, 1000)
     },
     addingImgAndClassToDiv() {
@@ -225,76 +225,72 @@ const game = {
 
     },
 
-    displayClientsInWindow(){
+    displayClientsInWindow() {
         this.shuffleClients();
         $li = $('<li/>');
         $($li).addClass('client_name');
         $('.orders').append($($li));
         $($li).text(this.client[0].name);
-        
-            for(let i=0; i < this.client[0].food.length; i++){
-                $li = $('<li/>');
-                $($li).addClass('checkOut');
-                $('.orders').append($($li));
-                $($li).text(this.client[0].food[i]);
-                this.currentClientOrder.push(this.client[0].food[i]);
-         }
+
+        for (let i = 0; i < this.client[0].food.length; i++) {
+            $li = $('<li/>');
+            $($li).addClass('checkOut');
+            $('.orders').append($($li));
+            $($li).text(this.client[0].food[i]);
+            this.currentClientOrder.push(this.client[0].food[i]);
+        }
 
     },
 
     checkForSameItem() {
-    let $li = $('.checkOut');
-    for (let i = 0; i < this.currentClientOrder.length; i++) {
-        if (this.foodItem === this.currentClientOrder[i]) {
-            this.currentClientOrder.splice(i, 1);
+        let $li = $('.checkOut');
+        for (let i = 0; i < this.currentClientOrder.length; i++) {
+            if (this.foodItem === this.currentClientOrder[i]) {
+                this.currentClientOrder.splice(i, 1);
+            }
+            if (this.foodItem === $($li[i]).text()) {
+                $($li[i]).remove();
+            }
+
         }
-        if (this.foodItem === $($li[i]).text()) {
-            $($li[i]).remove();
-        }
-
-    }
-    console.log(this.foodItem);
-    console.log(this.currentClientOrder);
+        console.log(this.foodItem);
+        console.log(this.currentClientOrder);
     },
 
-    restartForNextRound(){
-            this.timer = 0;
-            this.round = 15;
-
-            $('.client_name').remove();
-            $('.timer').text(this.round);
-            this.removeImagesAndClass();
-            this.displayClientsInWindow();
-            this.shuffleImages();
-            this.addingImgAndClassToDiv();
-            this.startTimer();
-
+    restartForNextRound() {
+        this.timer = 0;
+        this.round = 15;
+        $('.client_name').remove();
+        $('.timer').text(this.round);
+        this.removeImagesAndClass();
+        this.displayClientsInWindow();
+        this.shuffleImages();
+        this.addingImgAndClassToDiv();
+        this.startTimer();
     },
 
-    startGame(){
-         $('.start').css('display', 'none');
-            this.showImagesInDivs();
-            this.createClient();
-            this.displayClientsInWindow();
-            this.dataForClasses();
-            this.shuffleImages();
-            this.addingImgAndClassToDiv();
+    startGame() {
+        $('.start').css('display', 'none');
+        this.showImagesInDivs();
+        this.createClient();
+        this.displayClientsInWindow();
+        this.dataForClasses();
+        this.shuffleImages();
+        this.addingImgAndClassToDiv();
     },
-    showImagesInDivs(){
-            this.gameOn = true;
-            // this.displayImg();
-            this.startTimer();
-
+    showImagesInDivs() {
+        this.gameOn = true;
+        this.startTimer();
     },
 
-    removeImagesAndClass(){
+    removeImagesAndClass() {
         // set class attr to 'card'
         // set css background-images for each card to none
         $('.container div').attr('class', 'card');
         $('.container div:not(:last-child)').css('background-image', 'none');
     },
 
-    showGameOver(){
+    displayGameOver() {
         $div = $('<div/>');
         $($div).addClass('game_over');
         $('body').append($div);
@@ -303,173 +299,127 @@ const game = {
         $($h1).text("Game Over");
     },
 
-    removeNameAndFoodOrders(){
-        $('.orders li').remove();
+    removeNameAndFoodOrders() {
+        $('.client_name').remove();
+        $('.checkOut').remove();
+    },
+
+    playAgain() {
+        $('.profit').text(0);
+        $('.served').text(0);
+        this.restartForNextRound();
+        this.clicked = true;
+
+    },
+
+    gameOver() {
+
     }
+
+
 }
 
 
 
 $('body').on('click', (e) => {
     if (game.gameOn !== true) {
-       
+
         if ($(e.target).attr('class') === 'start') {
-            game.startGame()
+            game.startGame();
         }
-        if ($(e.target).attr('class') === 'play_again') { 
-           game.restartForNextRound();
-           game.clicked = true;
+        if ($(e.target).attr('class') === 'play_again') {
+            game.playAgain();
         }
 
-        if($(e.target).attr('class') === 'next'){
+        if ($(e.target).attr('class') === 'next') {
             game.restartForNextRound();
             game.nextClicked = true;
-            
-        }
-                                            
-    } 
 
-    if ($(e.target).attr('class') === 'card burger'){
-            game.foodClass = $(e.target).attr('class');
-            game.sliceClassLeaveFoodItem();
-            game.checkForSameItem();
         }
 
-        if ($(e.target).attr('class') === 'card taco'){
-            game.foodClass = $(e.target).attr('class');
-            game.sliceClassLeaveFoodItem();
-            game.checkForSameItem();
-        }
+    }
+    if ($(e.target).attr('class') === 'card burger') {
+        game.foodClass = $(e.target).attr('class');
+        game.sliceClassLeaveFoodItem();
+        game.checkForSameItem();
+    }
 
-        if ($(e.target).attr('class') === 'card steak'){
-            game.foodClass = $(e.target).attr('class');
-            game.sliceClassLeaveFoodItem();
-            game.checkForSameItem();
-        }
+    if ($(e.target).attr('class') === 'card taco') {
+        game.foodClass = $(e.target).attr('class');
+        game.sliceClassLeaveFoodItem();
+        game.checkForSameItem();
+    }
 
-        if ($(e.target).attr('class') === 'card chicken'){
-            game.foodClass = $(e.target).attr('class');
-            game.sliceClassLeaveFoodItem();
-            game.checkForSameItem();
-        }
+    if ($(e.target).attr('class') === 'card steak') {
+        game.foodClass = $(e.target).attr('class');
+        game.sliceClassLeaveFoodItem();
+        game.checkForSameItem();
+    }
 
-        if ($(e.target).attr('class') === 'card fish'){
-            game.foodClass = $(e.target).attr('class');
-            game.sliceClassLeaveFoodItem();
-            game.checkForSameItem();
-        }
+    if ($(e.target).attr('class') === 'card chicken') {
+        game.foodClass = $(e.target).attr('class');
+        game.sliceClassLeaveFoodItem();
+        game.checkForSameItem();
+    }
 
-        if ($(e.target).attr('class') === 'card ice-cream'){
-            game.foodClass = $(e.target).attr('class');
-            game.sliceClassLeaveFoodItem();
-            game.checkForSameItem();
-        }
+    if ($(e.target).attr('class') === 'card fish') {
+        game.foodClass = $(e.target).attr('class');
+        game.sliceClassLeaveFoodItem();
+        game.checkForSameItem();
+    }
 
-        if ($(e.target).attr('class') === 'card cake'){
-            game.foodClass = $(e.target).attr('class');
-            game.sliceClassLeaveFoodItem();
-            game.checkForSameItem();
-        }
+    if ($(e.target).attr('class') === 'card ice-cream') {
+        game.foodClass = $(e.target).attr('class');
+        game.sliceClassLeaveFoodItem();
+        game.checkForSameItem();
+    }
 
-        if ($(e.target).attr('class') === 'card avocado'){
-            game.foodClass = $(e.target).attr('class');
-            game.sliceClassLeaveFoodItem();
-            game.checkForSameItem();
-        }
+    if ($(e.target).attr('class') === 'card cake') {
+        game.foodClass = $(e.target).attr('class');
+        game.sliceClassLeaveFoodItem();
+        game.checkForSameItem();
+    }
 
-        if ($(e.target).attr('class') === 'card apple'){
-            game.foodClass = $(e.target).attr('class');
-            game.sliceClassLeaveFoodItem();
-            game.checkForSameItem();
-        }
+    if ($(e.target).attr('class') === 'card avocado') {
+        game.foodClass = $(e.target).attr('class');
+        game.sliceClassLeaveFoodItem();
+        game.checkForSameItem();
+    }
 
-        if ($(e.target).attr('class') === 'card peanuts'){
-            game.foodClass = $(e.target).attr('class');
-            game.sliceClassLeaveFoodItem();
-            game.checkForSameItem();
-        }
+    if ($(e.target).attr('class') === 'card apple') {
+        game.foodClass = $(e.target).attr('class');
+        game.sliceClassLeaveFoodItem();
+        game.checkForSameItem();
+    }
 
-        if ($(e.target).attr('class') === 'card watermelon'){
-            game.foodClass = $(e.target).attr('class');
-            game.sliceClassLeaveFoodItem();
-            game.checkForSameItem();
-        }
+    if ($(e.target).attr('class') === 'card peanuts') {
+        game.foodClass = $(e.target).attr('class');
+        game.sliceClassLeaveFoodItem();
+        game.checkForSameItem();
+    }
 
-        if ($(e.target).attr('class') === 'card carrot'){
-            game.foodClass = $(e.target).attr('class');
-            game.sliceClassLeaveFoodItem();
-            game.checkForSameItem();
-        }
+    if ($(e.target).attr('class') === 'card watermelon') {
+        game.foodClass = $(e.target).attr('class');
+        game.sliceClassLeaveFoodItem();
+        game.checkForSameItem();
+    }
 
-        if ($(e.target).attr('class') === 'card bread'){
-            game.foodClass = $(e.target).attr('class');
-            game.sliceClassLeaveFoodItem();
-            game.checkForSameItem();
-        }
+    if ($(e.target).attr('class') === 'card carrot') {
+        game.foodClass = $(e.target).attr('class');
+        game.sliceClassLeaveFoodItem();
+        game.checkForSameItem();
+    }
 
-        if ($(e.target).attr('class') === 'card pizza'){
-            game.foodClass = $(e.target).attr('class');
-            game.sliceClassLeaveFoodItem();
-            game.checkForSameItem();
-        }
+    if ($(e.target).attr('class') === 'card bread') {
+        game.foodClass = $(e.target).attr('class');
+        game.sliceClassLeaveFoodItem();
+        game.checkForSameItem();
+    }
+
+    if ($(e.target).attr('class') === 'card pizza') {
+        game.foodClass = $(e.target).attr('class');
+        game.sliceClassLeaveFoodItem();
+        game.checkForSameItem();
+    }
 
 });
-
-
-
-   
-$(function(){
-    $('.card').draggable();
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
