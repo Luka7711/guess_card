@@ -123,11 +123,7 @@ const game = {
                     'background-color': 'white'
                 });
             }
-<<<<<<< HEAD
-            //when timer of round reaches 0 game is over
 
-=======
->>>>>>> logic
 
             //when timer of round reaches 0 game is over
             //if game on turn off the button show cards
@@ -135,30 +131,17 @@ const game = {
             if (this.currentClientOrder.length === 0) {
                 this.clearTimeout();
                 this.gameOn = false;
-<<<<<<< HEAD
-                $('.profit').text(this.profit += this.cash);
-                $('.served').text(this.served += 1);
-=======
+
                 $('.profit').text(this.profit+=this.cash);
                 $('.served').text(this.served+=1);
                 $('progress').attr('value', this.progressValue+=50);
->>>>>>> logic
                 $('.next').css('display', 'block');
-
-
             }
-<<<<<<< HEAD
-            if (this.round === 0) {
-
-                alert('game over');
-                this.timer = 0;
-=======
               if (this.round === 0) {
                
                 alert('game over');
                 this.timer = 0;
                 this.progressValue = 0;
->>>>>>> logic
                 this.clearTimeout();
                 this.currentClientOrder = [];
                 this.gameOn = false;
@@ -179,11 +162,7 @@ const game = {
             if (this.clicked === true) {
                 $('.play_again').css('display', 'none');
             }
-<<<<<<< HEAD
-=======
-        
-        
->>>>>>> logic
+       
         }, 1000)
     },
 
@@ -337,15 +316,6 @@ const game = {
         $('progress').attr('value', this.progressValue);
         this.restartForNextRound();
         this.clicked = true;
-<<<<<<< HEAD
-
-    },
-
-    gameOver() {
-
-=======
-         
->>>>>>> logic
     }
 
 }
@@ -367,15 +337,12 @@ $('body').on('click', (e) => {
             game.nextClicked = true;
 
         }
-
-<<<<<<< HEAD
     }
     if ($(e.target).attr('class') === 'card burger') {
         game.foodClass = $(e.target).attr('class');
         game.sliceClassLeaveFoodItem();
         game.checkForSameItem();
     }
-=======
         if ($(e.target).attr('class') === 'card steak'){
             game.foodClass = $(e.target).attr('class');
             game.sliceClassLeaveFoodItem();
@@ -486,91 +453,3 @@ $('body').on('click', (e) => {
 
 
 
-
-
-
-
->>>>>>> logic
-
-    if ($(e.target).attr('class') === 'card taco') {
-        game.foodClass = $(e.target).attr('class');
-        game.sliceClassLeaveFoodItem();
-        game.checkForSameItem();
-    }
-
-    if ($(e.target).attr('class') === 'card steak') {
-        game.foodClass = $(e.target).attr('class');
-        game.sliceClassLeaveFoodItem();
-        game.checkForSameItem();
-    }
-
-    if ($(e.target).attr('class') === 'card chicken') {
-        game.foodClass = $(e.target).attr('class');
-        game.sliceClassLeaveFoodItem();
-        game.checkForSameItem();
-    }
-
-    if ($(e.target).attr('class') === 'card fish') {
-        game.foodClass = $(e.target).attr('class');
-        game.sliceClassLeaveFoodItem();
-        game.checkForSameItem();
-    }
-
-    if ($(e.target).attr('class') === 'card ice-cream') {
-        game.foodClass = $(e.target).attr('class');
-        game.sliceClassLeaveFoodItem();
-        game.checkForSameItem();
-    }
-
-    if ($(e.target).attr('class') === 'card cake') {
-        game.foodClass = $(e.target).attr('class');
-        game.sliceClassLeaveFoodItem();
-        game.checkForSameItem();
-    }
-
-    if ($(e.target).attr('class') === 'card avocado') {
-        game.foodClass = $(e.target).attr('class');
-        game.sliceClassLeaveFoodItem();
-        game.checkForSameItem();
-    }
-
-    if ($(e.target).attr('class') === 'card apple') {
-        game.foodClass = $(e.target).attr('class');
-        game.sliceClassLeaveFoodItem();
-        game.checkForSameItem();
-    }
-
-    if ($(e.target).attr('class') === 'card peanuts') {
-        game.foodClass = $(e.target).attr('class');
-        game.sliceClassLeaveFoodItem();
-        game.checkForSameItem();
-    }
-
-    if ($(e.target).attr('class') === 'card watermelon') {
-        game.foodClass = $(e.target).attr('class');
-        game.sliceClassLeaveFoodItem();
-        game.checkForSameItem();
-    }
-
-<<<<<<< HEAD
-    if ($(e.target).attr('class') === 'card carrot') {
-        game.foodClass = $(e.target).attr('class');
-        game.sliceClassLeaveFoodItem();
-        game.checkForSameItem();
-    }
-
-    if ($(e.target).attr('class') === 'card bread') {
-        game.foodClass = $(e.target).attr('class');
-        game.sliceClassLeaveFoodItem();
-        game.checkForSameItem();
-    }
-
-    if ($(e.target).attr('class') === 'card pizza') {
-        game.foodClass = $(e.target).attr('class');
-        game.sliceClassLeaveFoodItem();
-        game.checkForSameItem();
-    }
-
-});
-=======
->>>>>>> logic
