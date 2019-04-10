@@ -1,6 +1,6 @@
 //created names and foods 
 let names = ['Greg', 'Bill', 'Anil', 'Porter', 'Thiago', 'Lana', 'Wes',
-    'Justin', 'Tanya', 'Zack', 'Clayton', 'Connaught', 'Reuben', 'Jacob'
+    'Justin', 'Tania', 'Zack', 'Clayton', 'Connaught', 'Reuben', 'Jacob'
 ];
 
 let foods = ['pizza', 'taco', 'burger', 'fish', 'fries', 'watermelon',
@@ -117,7 +117,7 @@ const game = {
             this.roundTimer();
             // console.log(this.timer);
 
-            if (this.timer > 10) {
+            if (this.timer > 5) {
                 $('.card:not(:last-child)').not('.card_btn').css({
                     'background-image': 'none',
                     'background-color': 'white'
@@ -453,6 +453,15 @@ $('body').on('click', (e) => {
                         game.animateCook();
 
         }
+
+          if ($(e.target).attr('class') === 'card taco'){
+            game.foodClass = $(e.target).attr('class');
+            game.sliceClassLeaveFoodItem();
+            game.checkForSameItem();
+                        game.animateCook();
+
+        }
+
 
 });
 

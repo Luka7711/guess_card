@@ -30,6 +30,7 @@ body{
 	border-radius: 10px;
 	background-position: center;
 	background-color: white;
+	cursor: pointer;
 }
 
 .hint{
