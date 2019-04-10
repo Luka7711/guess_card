@@ -323,7 +323,16 @@ const game = {
         this.restartForNextRound();
         this.clicked = true;
          
-    }
+    },
+
+    animateCook(){
+    $('.cook').animate({
+        top:'1%'
+    }, 200);
+    $('.cook').animate({
+        top:'5%'
+    }, 200);
+ }
 
 }
 
@@ -351,84 +360,111 @@ $('body').on('click', (e) => {
             game.foodClass = $(e.target).attr('class');
             game.sliceClassLeaveFoodItem();
             game.checkForSameItem();
+            game.animateCook();
         }
 
         if ($(e.target).attr('class') === 'card taco'){
             game.foodClass = $(e.target).attr('class');
             game.sliceClassLeaveFoodItem();
             game.checkForSameItem();
+                        game.animateCook();
+
         }
 
         if ($(e.target).attr('class') === 'card steak'){
             game.foodClass = $(e.target).attr('class');
             game.sliceClassLeaveFoodItem();
             game.checkForSameItem();
+                        game.animateCook();
+
         }
 
         if ($(e.target).attr('class') === 'card chicken'){
             game.foodClass = $(e.target).attr('class');
             game.sliceClassLeaveFoodItem();
             game.checkForSameItem();
+                        game.animateCook();
+
         }
 
         if ($(e.target).attr('class') === 'card sushi'){
             game.foodClass = $(e.target).attr('class');
             game.sliceClassLeaveFoodItem();
             game.checkForSameItem();
+                        game.animateCook();
+
         }
 
         if ($(e.target).attr('class') === 'card ice-cream'){
             game.foodClass = $(e.target).attr('class');
             game.sliceClassLeaveFoodItem();
             game.checkForSameItem();
+                        game.animateCook();
+
         }
 
         if ($(e.target).attr('class') === 'card cake'){
             game.foodClass = $(e.target).attr('class');
             game.sliceClassLeaveFoodItem();
             game.checkForSameItem();
+                        game.animateCook();
+
         }
 
         if ($(e.target).attr('class') === 'card coffee'){
             game.foodClass = $(e.target).attr('class');
             game.sliceClassLeaveFoodItem();
             game.checkForSameItem();
+                        game.animateCook();
+
         }
 
         if ($(e.target).attr('class') === 'card fish'){
             game.foodClass = $(e.target).attr('class');
             game.sliceClassLeaveFoodItem();
             game.checkForSameItem();
+                        game.animateCook();
+
         }
 
         if ($(e.target).attr('class') === 'card fries'){
             game.foodClass = $(e.target).attr('class');
             game.sliceClassLeaveFoodItem();
             game.checkForSameItem();
+                        game.animateCook();
+
         }
 
         if ($(e.target).attr('class') === 'card watermelon'){
             game.foodClass = $(e.target).attr('class');
             game.sliceClassLeaveFoodItem();
             game.checkForSameItem();
+                        game.animateCook();
+
         }
 
         if ($(e.target).attr('class') === 'card beer'){
             game.foodClass = $(e.target).attr('class');
             game.sliceClassLeaveFoodItem();
             game.checkForSameItem();
+                        game.animateCook();
+
         }
 
         if ($(e.target).attr('class') === 'card bread'){
             game.foodClass = $(e.target).attr('class');
             game.sliceClassLeaveFoodItem();
             game.checkForSameItem();
+                        game.animateCook();
+
         }
 
         if ($(e.target).attr('class') === 'card pizza'){
             game.foodClass = $(e.target).attr('class');
             game.sliceClassLeaveFoodItem();
             game.checkForSameItem();
+                        game.animateCook();
+
         }
 
 });
