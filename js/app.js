@@ -117,7 +117,7 @@ const game = {
             this.roundTimer();
             // console.log(this.timer);
 
-            if (this.timer > 5) {
+            if (this.timer > 10) {
                 $('.card:not(:last-child)').not('.card_btn').css({
                     'background-image': 'none',
                     'background-color': 'white'
