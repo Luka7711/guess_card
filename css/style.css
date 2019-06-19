@@ -200,6 +200,10 @@ h1{
 .orders li:first-child{
 		color:lightgrey;
 	}
+
+#mob_btn{
+	z-index:-1000;
+}
 }
 
 @media(max-width:900px){
@@ -323,6 +327,10 @@ h1{
 		top:15%;
 		left:55%;
 		color:black;
+	}
+
+	#mob_btn{
+		z-index: 100;
 	}
 }
 
