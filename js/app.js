@@ -11,20 +11,20 @@ let foods = ['pizza', 'taco', 'burger', 'fish', 'fries', 'watermelon',
 
 
 const urls = [
-    'url(https://png.pngtree.com/element_pic/16/11/03/cd52d8393a2f9f211e1056c2d6163a3c.jpg)',
-    'url(https://icon2.kisspng.com/20180327/izq/kisspng-korean-taco-junk-food-fast-food-vegetarian-cuisine-tacos-5aba84673ebf85.575845881522173031257.jpg)',
-    'url(https://banner2.kisspng.com/20180331/laq/kisspng-hamburger-cheeseburger-slider-french-fries-hot-dog-burger-5abf7c643fa542.2562303615224986602607.jpg)',
-    'url(https://banner2.kisspng.com/20180330/bhq/kisspng-jamaican-cuisine-fried-fish-escabeche-seafood-fried-fish-5abdd5f588fdc0.8275364015223905175611.jpg)',
-    'url(https://banner2.kisspng.com/20180130/xxq/kisspng-french-fries-frying-french-fries-5a703328280e04.5407720715173025681641.jpg)',
-    'url(https://banner2.kisspng.com/20180129/tle/kisspng-watermelon-seed-fruit-vegetable-watermelon-5a6eaadc992509.7018593115172021406273.jpg)',
-    'url(https://stongs.com/wp-content/uploads/2016/11/bread.png)',
-    'url(http://www.stickpng.com/assets/images/580b57fbd9996e24bc43c0e8.png)',
-    'url(http://clipart-library.com/images/8TG6aXAEc.png)',
-    'url(http://pngimg.com/uploads/sushi/sushi_PNG9266.png)',
-    'url(http://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Beer-Mug-PNG-Transparent-Image-1.png)',
-    'url(https://banner2.kisspng.com/20180130/rgq/kisspng-buffalo-wing-fried-chicken-chicken-fingers-kfc-bar-delicious-chicken-wings-5a703380170b12.6268266015173026560944.jpg)',
-    'url(https://banner2.kisspng.com/20180329/wgw/kisspng-beefsteak-grilling-spice-beef-tenderloin-steak-5abda14c655f29.7533364315223770364152.jpg)',
-    'url(http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c1bd.png)'
+    'url(./images/pizza.jpg)',
+    'url(./images/taco.jpg)',
+    'url(./images/burger.jpg)',
+    'url(./images/fish.jpg)',
+    'url(./images/fries.jpg)',
+    'url(./images/watermelon.jpg)',
+    'url(./images/bread.png)',
+    'url(./images/coffee.png)',
+    'url(./images/cake.png)',
+    'url(./images/sushi.png)',
+    'url(./images/beer.png)',
+    'url(./images/chicken.jpg)',
+    'url(./images/steak.jpg)',
+    'url(./images/ice-cream.png)'
 ];
 
 

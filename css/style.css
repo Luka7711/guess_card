@@ -1,4 +1,5 @@
 
+@media(max-width:1440px){
 body{
 	margin:0 auto;
 	position: relative;
@@ -195,6 +196,78 @@ h1{
 	color:black;
 
 }
+}
+
+@media(max-width:900px){
+	body{
+		margin:0 auto;
+	}
+	.utensils{
+		width:70px;
+		height:auto;
+	}
+
+	h1{
+		margin:0 20px;
+	}
+
+	.timer{
+		margin-left:150px;
+		margin-right:100px;
+	}
+
+	.cook{
+		top:3%;
+		left:55%;
+	}
+
+	.container{
+		padding-left:100px;
+	}
+
+	.card{
+		width:90px;
+	}
+
+	.points_container{
+		left:0;
+	}
+	.orders{
+		top:15%;
+	}
+
+	.points_board li{
+		font-size:16px;
+	}
+	progress{
+		width:150px;
+	}
+
+	.orders{
+		margin-left:13px;
+	}
+
+	.game_over{
+		top:35%;
+		left:32%;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
