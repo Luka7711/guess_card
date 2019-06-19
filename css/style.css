@@ -196,6 +196,10 @@ h1{
 	color:black;
 
 }
+
+.orders li:first-child{
+		color:lightgrey;
+	}
 }
 
 @media(max-width:900px){
@@ -253,15 +257,72 @@ h1{
 	}
 }
 
+@media(max-width:375px){
+	h1{
+		font-size:16px;
+	}
 
+	.utensils{
+		width:30px;
+		height:auto;
+	}
+	.cook{
+		left:75%;
+		top:3%;
+		width:70px;
+		height: auto;
+	}
+	.timer{
+		margin-left:50px;
+		margin-right:0;
+		margin-top:4%;
+	}
 
+	.start{
+		left:55%;
+		top:90%;
+	}
+	.container{
+		width:280px;
+		height:500px;
+	}
+	.points_container{
+		left:-9%;
+	}
+	.points_board li:first-child{
+		color:lightgrey;
+	}
+	.points_board li:last-child{
+		display: none;
+	}
+	.card{
+		width:70px;
+		height:70px;
+		margin-left:10px;
+		margin-top:10px;
+	}
 
+	.orders{
+		position:absolute;
+		top:40%;
+		left:-9%;
+	}
 
+	.orders li{
+		font-size: 16px;
+	}
 
-
-
-
-
+	.game_over{
+		width:300px;
+		left:12%;
+	}
+	.next{
+		background: lightgreen;
+		top:15%;
+		left:55%;
+		color:black;
+	}
+}
 
 
 

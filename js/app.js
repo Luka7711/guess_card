@@ -234,7 +234,8 @@ const game = {
         $li = $('<li/>');
         $($li).addClass('client_name');
         $('.orders').append($($li));
-        $($li).text(this.client[0].name);
+        $($li).text(`client: ${this.client[0].name}`);
+
 
         for (let i = 0; i < this.client[0].food.length; i++) {
             $li = $('<li/>');
