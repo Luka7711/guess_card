@@ -329,8 +329,12 @@ h1{
 		color:black;
 	}
 
+	.start{
+		display: none;
+	}
 	#mob_btn{
-		z-index: 100;
+		z-index: 1000;
+		display: block;
 	}
 }
 
