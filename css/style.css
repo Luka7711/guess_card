@@ -281,6 +281,8 @@ h1{
 	.start{
 		left:55%;
 		top:90%;
+		background: lightblue;
+		color:black;
 	}
 	.container{
 		width:280px;
